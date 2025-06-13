@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import useAuth from '../../hokes/useAuth';
 
 
 const NavBar = () => {
+    const {user } = useAuth();
+    console.log(user)
     const links = <>
         <li><NavLink to={`/`}>Home</NavLink></li>
         <li><NavLink to={`/`}>Home</NavLink></li>

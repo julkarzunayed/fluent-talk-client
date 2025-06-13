@@ -42,9 +42,6 @@ FluentTalk is a platform where users can
 
 1. Start the development server:
 
-   ```bash
-   npm start
-   ```
 2. Open the app in your browser at `http://localhost:3000`.
 
 ---
@@ -64,6 +61,7 @@ FluentTalk is a platform where users can
 * `tailwindcss`
 * `daisyui`
 * `dotenv`
+* `react-spinners`
 * 
 
 ---
