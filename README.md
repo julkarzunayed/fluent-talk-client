@@ -64,6 +64,8 @@ FluentTalk is a platform where users can
 * `react-spinners`
 * `tanstack/react-query`
 * `sweetalert2`
+* `motion/react`
+* `react-simple-typewriter`
 * 
 
 ---
