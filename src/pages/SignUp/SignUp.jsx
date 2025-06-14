@@ -5,7 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
-    const { createUser, user } = useAuth();
+    const { createUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const role = location?.state?.role;
@@ -14,7 +14,7 @@ const SignUp = () => {
 
     //DB User Creation 
     const handleDBUserCreation = (userInfo) => {
-        axios.post(`http://localhost:3000/users`, userInfo)
+        axios.post(`http://localhost:3000/user`, userInfo)
             .then(result => {
                 if (result.data.insertedId) {
                     Swal.fire({

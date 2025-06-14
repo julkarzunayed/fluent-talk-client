@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
+import useAuth from '../../hokes/useAuth';
+import Swal from 'sweetalert2';
 
 const LogIn = () => {
+    const { logInUser } = useAuth();
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
     const navigate = useNavigate()
 
     const handleNavigateToSignUp = (role) => {
@@ -11,11 +14,51 @@ const LogIn = () => {
         location.state = {
             role: role,
         }
-        navigate('/signUp', {state: {role: role}})
+        navigate('/signUp', { state: { role: role } })
         // console.log(location)
     }
     // console.log(import.meta.env.VITE_appId)
     const handleEmailPasswordLogin = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logInUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                if(result.user){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "You have successfully signed up!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(location.state?.path || '/')
+                }
+            })
+            .catch( err => {
+                console.log(err);
+                console.log(err.message);
+                console.log(err.code);
+                if(err.code === 'auth/invalid-credential'){
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "Your Email might not registered!",
+                        timer: 3000
+                    });
+                }else{
+                    Swal.fire({
+                        position: "center",
+                        icon: "error",
+                        title: "There might some unknown Error occurred!",
+                        timer: 3000
+                    });
+                }
+            })
 
     }
     return (
@@ -72,7 +115,11 @@ const LogIn = () => {
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                 </g>
                             </svg>
-                            <input type="email" placeholder="mail@site.com" required />
+                            <input
+                                type="email"
+                                name='email'
+                                placeholder="mail@site.com"
+                                required />
                         </label>
                         <div className="validator-hint hidden">Enter valid email address</div>
 
@@ -95,17 +142,13 @@ const LogIn = () => {
                             </svg>
                             <input
                                 type="password"
+                                name='password'
                                 required
                                 placeholder="Password"
-                                minlength="8"
+                                // minlength="8"
                                 // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
                             />
                         </label>
-                        <p className="validator-hint hidden">
-                            Must be more than 8 characters, including
-                            <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
-                        </p>
                         <input className='btn w-full mt-2' type="submit" value='Log In' />
                     </form>
                 </div>
