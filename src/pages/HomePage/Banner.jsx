@@ -30,14 +30,14 @@ const Banner = () => {
                             animate={{ y: [70, 130, 70], x: [10] }}
                             transition={{ duration: 5, repeat: Infinity }}
                             style={{ backgroundImage: `url('https://i.ibb.co/LDyHq0vt/boy-learning-online.jpg')` }}
-                            className="w-[65%] border-blue-500 border-s-8 border-b-8 rounded-t-[40px] rounded-br-[40px] shadow-2xl h-[250px] md:h-[250px] lg:h-[265px] bg-cover bg-center">
+                            className="w-[65%] border-orange-500 border-s-4 sm:border-s-8 border-b-4 sm:border-b-8 rounded-t-[40px] rounded-br-[40px] shadow-2xl h-[250px] md:h-[250px] lg:h-[265px] bg-cover bg-center">
 
                         </motion.div>
                         <motion.div
                             animate={{ x: [70, 130, 70] }}
                             transition={{ duration: 10, delay: 5, repeat: Infinity }}
                             style={{ backgroundImage: `url('https://i.ibb.co/Q3w9X38q/Child-online-learning.jpg')` }}
-                            className="w-[65%] border-blue-500 border-s-8 border-b-8 rounded-t-[40px] rounded-br-[40px] shadow-2xl h-[250px] md:h-[250px] lg:h-[265px] bg-cover bg-center">
+                            className="w-[65%] border-orange-500 border-s-4 sm:border-s-8 border-b-4 sm:border-b-8 rounded-t-[40px] rounded-br-[40px] shadow-2xl h-[250px] md:h-[250px] lg:h-[265px] bg-cover bg-center">
 
                         </motion.div>
                     </div>
