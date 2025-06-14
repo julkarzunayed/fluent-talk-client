@@ -1,40 +1,43 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router';
 import useAuth from '../../hokes/useAuth';
+import { FaListUl } from 'react-icons/fa';
 
 
 const NavBar = () => {
-    const {user } = useAuth();
+    const { user } = useAuth();
+    const [showLinks, setShowLinks] = useState(false);
+    console.log(showLinks)
     console.log(user)
     const links = <>
         <li><NavLink to={`/`}>Home</NavLink></li>
-        <li><NavLink to={`/`}>Home</NavLink></li>
+        <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
+        <li><NavLink to={`/addTutorials`}>Add Tutorials </NavLink></li>
+        <li><NavLink to={`/myTutorials`}>My Tutorials</NavLink></li>
+
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow flex gap-1">
-                        {/* NavLinks */}
-                        {links}
+        <div className="p-2 min-h-14 flex items-center justify-between">
+            <h2 className="text-2xl font-bold">FluentTalk</h2>
 
-                    </ul>
-                </div>
-                <a className="btn btn-ghost text-xl">FluentTalk</a>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 flex gap-1">
-                    {/* NavLinks */}
+            <div className="hidden md:block">
+                <ul className='*:p-2 *:hover:bg-gray-100 flex'>
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
+            <button onClick={() => setShowLinks(!showLinks)}><FaListUl size={28} /></button>
+
+            <div onClick={() => setShowLinks(false)} className={`${showLinks ? '' : 'hidden'} fixed  bg-amber-20 w-screen h-[200vh] z-30`}>
+
+            </div>
+
+            <div className={`transition duration-100  ${showLinks ? 'scale-100' : 'scale-0'} absolute right-5 top-15 bg-white  rounded-sm shadow-2xl z-40`}>
+                <ul className='*:p-2 *:w-full *:hover:bg-gray-100'>
+                    {links}
+                    <li><NavLink to={`/messages`}>Messages</NavLink></li>
+                    <li><NavLink to={`/settings`}>Settings</NavLink></li>
+                    <li><NavLink to={`/help`}>Help</NavLink></li>
+                </ul>
             </div>
         </div>
     );

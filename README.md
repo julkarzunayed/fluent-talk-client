@@ -62,6 +62,8 @@ FluentTalk is a platform where users can
 * `daisyui`
 * `dotenv`
 * `react-spinners`
+* `tanstack/react-query`
+* `sweetalert2`
 * 
 
 ---
