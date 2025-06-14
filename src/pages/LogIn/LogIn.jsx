@@ -1,7 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const LogIn = () => {
+    const location = useLocation();
+    console.log(location)
+    const navigate = useNavigate()
+
+    const handleNavigateToSignUp = (role) => {
+        console.log(role)
+        location.state = {
+            role: role,
+        }
+        navigate('/signUp', {state: {role: role}})
+        // console.log(location)
+    }
     // console.log(import.meta.env.VITE_appId)
     const handleEmailPasswordLogin = e => {
 
@@ -12,9 +24,20 @@ const LogIn = () => {
                 <h1 className="my-3 font-bold text-3xl">LogIn Now!</h1>
                 <div className="">
                     <div className="mb-3 flex justify-between gap-2">
-                        <Link to={`/signUp`} className='underline'>Sign Up as a student</Link>
+                        {/* <Link
+                            onClick={() => handleNavigateToSignUp('student')}
+                            to={`/signUp`}
+                            className='underline'>Sign Up as a student</Link> */}
+
+                        <button
+                            onClick={() => handleNavigateToSignUp('student')}
+                            className='underline'>Sign Up as a student</button>
                         or
-                        <Link className='underline'>Sign Up as a tutor</Link>
+                        <button
+                            onClick={() => handleNavigateToSignUp('tutor')}
+                            className='underline'>Sign Up as a tutor</button>
+
+                        {/* <Link className='underline'>Sign Up as a tutor</Link> */}
                     </div>
                     <div className="flex flex-col gap-3">
                         {/* Google */}

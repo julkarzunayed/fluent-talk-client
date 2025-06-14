@@ -1,20 +1,74 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import useAuth from '../../hokes/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
+    const { createUser, user } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const role = location?.state?.role;
+    const isRole = Boolean(role);
+    // console.log(isRole, location.state);
+
+    //DB User Creation 
+    const handleDBUserCreation = (userInfo) => {
+        axios.post(`http://localhost:3000/users`, userInfo)
+            .then(result => {
+                if (result.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "You have successfully signed up!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(location.state?.path || '/')
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     const handleEmailPasswordLogin = e => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form);
-        const userInfo = Object.fromEntries(formData.entries());
+        const email = formData.get('email');
+        const password = formData.get('password');
+        const name = formData.get('name');
+        const photo_URL = formData.get('photo_URL');
+        // const userInfo = Object.fromEntries(formData.entries());
+
+        const userInfo = {
+            email,
+            name,
+            photo_URL,
+            role: role,
+        }
+        if (!isRole) {
+            userInfo.role = 'student'
+        }
         console.log(userInfo);
+
+
+        createUser(email, password)
+            .then(result => {
+                if (result.user) {
+                    handleDBUserCreation(userInfo)
+                }
+            }).catch(error => {
+                console.log(error)
+            })
 
     }
     return (
         <div className="flex items-center justify-center py-10">
             <div className="max-w-sm w-full">
-                <h1 className="my-3 font-bold text-3xl">Sign up as a Student!</h1>
+                <h1 className="my-3 font-bold text-3xl">Sign up as a
+                    {isRole ? location?.state?.role : " student"}!</h1>
                 <div className="">
                     <div className="mb-3 flex  gap-2">
                         Already have an account?
@@ -110,7 +164,7 @@ const SignUp = () => {
                             Must be more than 8 characters, including
                             <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
                         </p>
-                        <input className='btn w-full mt-2' type="submit" value='Log In' />
+                        <input className='btn w-full mt-2' type="submit" value='Sign Up' />
                     </form>
                 </div>
             </div>
