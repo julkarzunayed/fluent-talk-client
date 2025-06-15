@@ -60,7 +60,7 @@ const NavBar = () => {
                             }
                             {
                                 dbUser?.role === 'student' && <li>
-                                    <NavLink to={`/myTutorials`}>My Tutorials</NavLink>
+                                    <NavLink to={`/myTutorials`}>My Booked Tutorials</NavLink>
                                 </li>
                             }
 
@@ -113,7 +113,7 @@ const NavBar = () => {
                             }
                             {
                                 user && <li>
-                                    <NavLink to={`/myTutorials`}>My Tutorials</NavLink>
+                                    <NavLink to={`/myTutorials`}>My Booked Tutorials</NavLink>
                                 </li>
                             }
 

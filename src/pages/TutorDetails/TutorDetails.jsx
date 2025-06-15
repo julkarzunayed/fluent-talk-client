@@ -2,10 +2,38 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { IoMdHeart } from "react-icons/io";
 import { FaGraduationCap, FaRegHeart } from 'react-icons/fa';
+import useAuth from '../../hokes/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const TutorDetails = () => {
+    const { dbUser } = useAuth()
     const [tutor] = useLoaderData();
 
+    const hanDleBookTutorial = () => {
+        const tutorialBookingInfo = {
+            tutorial_id: tutor._id,
+            student_id: dbUser._id,
+            student_email: dbUser.email,
+            tutor_name: tutor.tutorName,
+            tutorial_language: tutor.language
+        }
+        console.log(tutorialBookingInfo);
+        axios.post(`http://localhost:3000/tutorialBooking`, tutorialBookingInfo)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: "Booked Tutor!",
+                        text: "You Have successfully Booked the tutor.",
+                        icon: "success"
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
     console.log(tutor)
     return (
         <div className='max-w-5xl relative mx-auto my-10 bg-base-200'>
@@ -64,9 +92,13 @@ const TutorDetails = () => {
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    <button className='btn flex-1 border border-orange-500'>Book Tutor</button>
-                    <button 
-                    className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'><FaRegHeart size={25}/></button>
+                    <button
+                        onClick={hanDleBookTutorial}
+                        className='btn flex-1 border border-orange-500'>Book Tutor
+                    </button>
+                    <button
+                        className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'><FaRegHeart size={25} />
+                    </button>
                 </div>
             </div>
 
