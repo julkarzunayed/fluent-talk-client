@@ -4,7 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const AddTutorial = () => {
-    const { user, dbUser } = useAuth();
+    const {  dbUser } = useAuth();
     const [languages, setLanguages] = useState([]);
     useEffect(() => {
         fetch(`./data/language_data.json`)

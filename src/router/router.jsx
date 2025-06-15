@@ -9,6 +9,7 @@ import AddTutorial from '../pages/AddTutorial/AddTutorial';
 import PrivetRout from '../routers/PrivetRout';
 import FindTutors from '../pages/FindTutors/FindTutors';
 import Loader from '../pages/Loader/Loader';
+import TutorDetails from '../pages/TutorDetails/TutorDetails';
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
                 loader: () => fetch(`http://localhost:3000/tutorial`),
                 Component : FindTutors,
                 hydrateFallbackElement: <Loader></Loader>
+            },
+            {
+                path: '/tutorDetails/:id',
+                element: <PrivetRout>
+                    <TutorDetails/>
+                </PrivetRout>,
+                loader: ({params}) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                hydrateFallbackElement: <Loader/>
             },
             {
                 path: 'logIn',

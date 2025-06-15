@@ -6,9 +6,9 @@ const FindTutors = () => {
     const tutors = useLoaderData();
     console.log(tutors);
     return (
-        <div className='p-5'>
+        <div className='p-5 max-w-7xl mx-auto'>
             <h1 className="text-center text-4xl font-bold my-5">Find a Teacher for You</h1>
-            <div className="">
+            <div className="grid lg:grid-cols-2 gap-3">
                 {
                     tutors.map(tutor => <TutorCard 
                         tutor={tutor}
