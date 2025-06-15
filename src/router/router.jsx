@@ -5,18 +5,31 @@ import Home from '../pages/HomePage/Home';
 import Error from '../pages/Error/Error';
 import SignUp from '../pages/SignUp/SignUp';
 import LogIn from '../pages/LogIn/LogIn';
+import AddTutorial from '../pages/AddTutorial/AddTutorial';
+import PrivetRout from '../routers/PrivetRout';
+import FindTutors from '../pages/FindTutors/FindTutors';
+import Loader from '../pages/Loader/Loader';
 
-const router = createBrowserRouter ([
+const router = createBrowserRouter([
     {
         path: '/',
-        Component:  RootLayout,
+        Component: RootLayout,
         children: [
             {
                 index: true,
                 Component: Home
             },
             {
-
+                path: '/addTutorials',
+                element: <PrivetRout>
+                    <AddTutorial />
+                </PrivetRout>
+            },
+            {
+                path: '/findTutors',
+                loader: () => fetch(`http://localhost:3000/tutorial`),
+                Component : FindTutors,
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: 'logIn',

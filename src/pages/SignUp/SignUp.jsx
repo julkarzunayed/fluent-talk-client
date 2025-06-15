@@ -17,6 +17,7 @@ const SignUp = () => {
         axios.post(`http://localhost:3000/user`, userInfo)
             .then(result => {
                 if (result.data.insertedId) {
+
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -24,6 +25,7 @@ const SignUp = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    
                     navigate(location.state?.path || '/')
                 }
             })

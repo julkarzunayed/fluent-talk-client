@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "languageName": "English",
+    "alpha2Code": "US",
+    "countryName": "United States of America"
+  },
+  {
+    "id": 2,
+    "languageName": "Mandarin Chinese",
+    "alpha2Code": "CN",
+    "countryName": "China"
+  },
+  {
+    "id": 3,
+    "languageName": "Spanish",
+    "alpha2Code": "ES",
+    "countryName": "Spain"
+  },
+  {
+    "id": 4,
+    "languageName": "Hindi",
+    "alpha2Code": "IN",
+    "countryName": "India"
+  },
+  {
+    "id": 5,
+    "languageName": "Arabic",
+    "alpha2Code": "SA",
+    "countryName": "Saudi Arabia"
+  },
+  {
+    "id": 6,
+    "languageName": "Bengali",
+    "alpha2Code": "BD",
+    "countryName": "Bangladesh"
+  },
+  {
+    "id": 7,
+    "languageName": "Portuguese",
+    "alpha2Code": "PT",
+    "countryName": "Portugal"
+  },
+  {
+    "id": 8,
+    "languageName": "Russian",
+    "alpha2Code": "RU",
+    "countryName": "Russian Federation"
+  },
+  {
+    "id": 9,
+    "languageName": "Japanese",
+    "alpha2Code": "JP",
+    "countryName": "Japan"
+  },
+  {
+    "id": 10,
+    "languageName": "German",
+    "alpha2Code": "DE",
+    "countryName": "Germany"
+  },
+  {
+    "id": 11,
+    "languageName": "Javanese",
+    "alpha2Code": "ID",
+    "countryName": "Indonesia"
+  },
+  {
+    "id": 12,
+    "languageName": "Korean",
+    "alpha2Code": "KR",
+    "countryName": "Korea (Republic of)"
+  },
+  {
+    "id": 13,
+    "languageName": "French",
+    "alpha2Code": "FR",
+    "countryName": "France"
+  },
+  {
+    "id": 14,
+    "languageName": "Vietnamese",
+    "alpha2Code": "VN",
+    "countryName": "Viet Nam"
+  },
+  {
+    "id": 15,
+    "languageName": "Telugu",
+    "alpha2Code": "IN",
+    "countryName": "India"
+  },
+  {
+    "id": 16,
+    "languageName": "Marathi",
+    "alpha2Code": "IN",
+    "countryName": "India"
+  },
+  {
+    "id": 17,
+    "languageName": "Tamil",
+    "alpha2Code": "LK",
+    "countryName": "Sri Lanka"
+  },
+  {
+    "id": 18,
+    "languageName": "Turkish",
+    "alpha2Code": "TR",
+    "countryName": "Turkey"
+  },
+  {
+    "id": 19,
+    "languageName": "Urdu",
+    "alpha2Code": "PK",
+    "countryName": "Pakistan"
+  },
+  {
+    "id": 20,
+    "languageName": "Gujarati",
+    "alpha2Code": "IN",
+    "countryName": "India"
+  },
+  {
+    "id": 21,
+    "languageName": "Polish",
+    "alpha2Code": "PL",
+    "countryName": "Poland"
+  },
+  {
+    "id": 22,
+    "languageName": "Ukrainian",
+    "alpha2Code": "UA",
+    "countryName": "Ukraine"
+  },
+  {
+    "id": 23,
+    "languageName": "Italian",
+    "alpha2Code": "IT",
+    "countryName": "Italy"
+  },
+  {
+    "id": 24,
+    "languageName": "Hausa",
+    "alpha2Code": "NG",
+    "countryName": "Nigeria"
+  },
+  {
+    "id": 25,
+    "languageName": "Burmese",
+    "alpha2Code": "MM",
+    "countryName": "Myanmar"
+  },
+  {
+    "id": 26,
+    "languageName": "Dutch",
+    "alpha2Code": "NL",
+    "countryName": "Netherlands"
+  },
+  {
+    "id": 27,
+    "languageName": "Yoruba",
+    "alpha2Code": "NG",
+    "countryName": "Nigeria"
+  },
+  {
+    "id": 28,
+    "languageName": "Nepali",
+    "alpha2Code": "NP",
+    "countryName": "Nepal"
+  },
+  {
+    "id": 29,
+    "languageName": "Swahili",
+    "alpha2Code": "TZ",
+    "countryName": "Tanzania, United Republic of"
+  },
+  {
+    "id": 30,
+    "languageName": "Amharic",
+    "alpha2Code": "ET",
+    "countryName": "Ethiopia"
+  }
+]
