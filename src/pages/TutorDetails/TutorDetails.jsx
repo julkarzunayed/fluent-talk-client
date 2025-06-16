@@ -13,7 +13,6 @@ const TutorDetails = () => {
     const hanDleBookTutorial = () => {
         const tutorialBookingInfo = {
             tutorial_id: tutor._id,
-            student_id: dbUser._id,
             student_email: dbUser.email,
             tutor_name: tutor.tutorName,
             tutorial_language: tutor.language

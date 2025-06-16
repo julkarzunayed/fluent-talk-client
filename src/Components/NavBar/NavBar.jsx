@@ -10,7 +10,7 @@ const NavBar = () => {
     const { user, dbUser, signOutUser, setDBUser } = useAuth();
     const [showLinks, setShowLinks] = useState(false);
     // console.log(showLinks)
-    // console.log(user)
+    // console.log(user.accessToken)
 
     const handleUserSighOut = () => {
         Swal.fire({
@@ -60,7 +60,7 @@ const NavBar = () => {
                             }
                             {
                                 dbUser?.role === 'student' && <li>
-                                    <NavLink to={`/myTutorials`}>My Booked Tutorials</NavLink>
+                                    <NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
                                 </li>
                             }
 
@@ -113,7 +113,7 @@ const NavBar = () => {
                             }
                             {
                                 user && <li>
-                                    <NavLink to={`/myTutorials`}>My Booked Tutorials</NavLink>
+                                    <NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
                                 </li>
                             }
 

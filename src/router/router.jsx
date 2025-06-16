@@ -10,6 +10,7 @@ import PrivetRout from '../routers/PrivetRout';
 import FindTutors from '../pages/FindTutors/FindTutors';
 import Loader from '../pages/Loader/Loader';
 import TutorDetails from '../pages/TutorDetails/TutorDetails';
+import MyBookedTutorials from '../pages/MyBookedTutorials/MyBookedTutorials';
 
 const router = createBrowserRouter([
     {
@@ -29,16 +30,34 @@ const router = createBrowserRouter([
             {
                 path: '/findTutors',
                 loader: () => fetch(`http://localhost:3000/tutorial`),
-                Component : FindTutors,
+                Component: FindTutors,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/tutorDetails/:id',
                 element: <PrivetRout>
-                    <TutorDetails/>
+                    <TutorDetails />
                 </PrivetRout>,
-                loader: ({params}) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
-                hydrateFallbackElement: <Loader/>
+                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                hydrateFallbackElement: <Loader />
+            },
+            {
+                path: '/myAddedTutorials',
+            },
+            {
+                path: '/myBookedTutorials',
+                element: <PrivetRout>
+                    <MyBookedTutorials/>
+                </PrivetRout>
+            },
+            {
+                path: '/messages',
+            },
+            {
+                path: '/settings',
+            },
+            {
+                path: '/help',
             },
             {
                 path: 'logIn',
