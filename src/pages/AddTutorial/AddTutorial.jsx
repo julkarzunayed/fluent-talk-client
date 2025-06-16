@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
 
 const AddTutorial = () => {
-    const {  dbUser } = useAuth();
+    const { dbUser } = useAuth();
     const [languages, setLanguages] = useState([]);
     const navigate = useNavigate();
 
@@ -23,7 +23,15 @@ const AddTutorial = () => {
         const language = formData.get('language');
         const price = formData.get('price');
         const description = formData.get('description');
-
+        if (!language) {
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Select a Language!",
+                showConfirmButton: true,
+            });
+            return;
+        }
         const language_alpha2Code = languages.find(L => L?.languageName === language)
 
         const tutorialInfo = {
@@ -32,7 +40,7 @@ const AddTutorial = () => {
             tutorId: dbUser?._id,
             tutorImage: dbUser?.photo_URL,
             language,
-            language_alpha2Code: language_alpha2Code.alpha2Code,
+            language_alpha2Code: language_alpha2Code?.alpha2Code,
             price,
             description
         }
@@ -84,8 +92,13 @@ const AddTutorial = () => {
                     {/* Language */}
                     <fieldset className='fieldset'>
                         <label className='label'>Language</label>
-                        <select className='select w-full' required name="language" defaultValue='Select a Language'>
-                            <option disabled={true} value="">Select a Language</option>
+
+                        <select
+                            className='select w-full'
+                            required
+                            name="language"
+                            defaultValue='Select a Language'>
+                            <option disabled={true}>Select a Language</option>
                             {
                                 languages?.map(language => <option >{language?.languageName}</option>)
                             }

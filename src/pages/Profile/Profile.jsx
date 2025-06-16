@@ -10,7 +10,7 @@ const Profile = () => {
         <div className='max-w-5xl relative mx-auto  bg-base-200'>
             <div className="relative border-b border-orange-300">
                 <div className="absolute w-full">
-                    <div className="bg-gray-300 h-36 rounded-b-3xl"></div>
+                    <div className="bg-gray-300 h-36 border-b border-orange-600 rounded-b-3xl"></div>
                     <div className="h-36"></div>
                 </div>
                 <figure
@@ -31,6 +31,12 @@ const Profile = () => {
                     </h3>
                     <p className="flex items-center justify-center gap-3"><TfiEmail className='text-orange-500'/> {dbUser?.email}</p>
                     <p className="flex items-center justify-center gap-3"> <FaRegIdBadge className='text-orange-500' />: {dbUser?._id}</p>
+                    <p className="">
+                        <span className='font-semibold'>Account Type: </span>
+                        {
+                            dbUser?.role === 'tutor' ? 'Tutor' : 'Student'
+                        }
+                    </p>
                 </div>
                 
             </div>
