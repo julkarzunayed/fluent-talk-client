@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import useAuth from '../../hokes/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const AddTutorial = () => {
     const {  dbUser } = useAuth();
     const [languages, setLanguages] = useState([]);
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch(`./data/language_data.json`)
             .then(res => res.json())
@@ -45,6 +48,7 @@ const AddTutorial = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate('/myAddedTutorials')
                 }
             }).catch(err => console.log(err))
 

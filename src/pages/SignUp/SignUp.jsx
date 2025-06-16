@@ -10,7 +10,7 @@ const SignUp = () => {
     const navigate = useNavigate();
     const role = location?.state?.role;
     const isRole = Boolean(role);
-    // console.log(isRole, location.state);
+    console.log(location);
 
     //DB User Creation 
     const handleDBUserCreation = (userInfo) => {
@@ -26,7 +26,7 @@ const SignUp = () => {
                         timer: 1500
                     });
                     
-                    navigate(location.state?.path || '/')
+                    navigate(location?.state || '/')
                 }
             })
             .catch(err => {

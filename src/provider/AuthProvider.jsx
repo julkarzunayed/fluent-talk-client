@@ -3,13 +3,14 @@ import { AuthContext } from '../contexts/AuthContext';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import axios from 'axios';
+import useDBUser from '../apis/useDBUser';
+import useAxiosSecure from '../hokes/useAxiosSecure';
 
 const AuthProvider = ({ children }) => {
-
     const [user, setUser] = useState(null);
     const [dbUser, setDBUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-
+    
     const createUser = (email, password) => {
         setIsLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
                 })
         }
     }, [user])
-    
+
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -46,7 +47,6 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    console.log(dbUser)
 
     const userInfo = {
         user,

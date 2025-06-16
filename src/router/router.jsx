@@ -11,6 +11,9 @@ import FindTutors from '../pages/FindTutors/FindTutors';
 import Loader from '../pages/Loader/Loader';
 import TutorDetails from '../pages/TutorDetails/TutorDetails';
 import MyBookedTutorials from '../pages/MyBookedTutorials/MyBookedTutorials';
+import MyAddedTutorials from '../pages/MyAddedTutorials/MyAddedTutorials';
+import Settings from '../pages/Settings/Settings';
+import ProfilePage from '../pages/Profile/ProfilePage';
 
 const router = createBrowserRouter([
     {
@@ -43,6 +46,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/myAddedTutorials',
+                element: <PrivetRout>
+                    <MyAddedTutorials/>
+                </PrivetRout>
             },
             {
                 path: '/myBookedTutorials',
@@ -54,7 +60,16 @@ const router = createBrowserRouter([
                 path: '/messages',
             },
             {
+                path: '/profile',
+                element: <PrivetRout>
+                    <ProfilePage/>
+                </PrivetRout>
+            },
+            {
                 path: '/settings',
+                element: <PrivetRout>
+                    <Settings/>
+                </PrivetRout>
             },
             {
                 path: '/help',

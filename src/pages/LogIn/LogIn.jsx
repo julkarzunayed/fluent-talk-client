@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const LogIn = () => {
     const { logInUser } = useAuth();
     const location = useLocation();
-    // console.log(location)
+    console.log(location)
     const navigate = useNavigate()
 
     const handleNavigateToSignUp = (role) => {
@@ -36,7 +36,10 @@ const LogIn = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate(location.state?.path || '/')
+                    navigate(location?.state || '/');
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 500);
                 }
             })
             .catch( err => {

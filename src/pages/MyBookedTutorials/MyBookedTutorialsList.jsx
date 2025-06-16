@@ -5,7 +5,7 @@ const MyBookedTutorialsList = ({ myBookedTutorialsPromise }) => {
     console.log(tutorials)
     return (
         <div>
-            My Booked Tutorials
+            My Booked Tutorials {tutorials.length}
         </div>
     );
 };

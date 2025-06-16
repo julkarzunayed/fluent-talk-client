@@ -9,7 +9,8 @@ import { PiSignInBold, PiSignOutBold } from 'react-icons/pi';
 const NavBar = () => {
     const { user, dbUser, signOutUser, setDBUser } = useAuth();
     const [showLinks, setShowLinks] = useState(false);
-    // console.log(showLinks)
+    // console.log(user)
+    // console.log(dbUser)
     // console.log(user.accessToken)
 
     const handleUserSighOut = () => {
@@ -30,7 +31,14 @@ const NavBar = () => {
                             text: "You Have successfully Sign Out.",
                             icon: "success"
                         });
-                        setDBUser(null)
+                        setDBUser(null);
+                        //
+                        // axios.post(`http://localhost:3000/api/signOut`, {
+                        //     uid: user.uid,
+                        // })
+                        //     .then(res => console.log(res.data))
+                        //     .catch(err => console.log(err));
+
                     }).catch(err => {
                         console.log(err);
                     })
@@ -103,12 +111,12 @@ const NavBar = () => {
                             <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
                             {
                                 dbUser?.role === 'tutor' && <>
-                                <li>
-                                    <NavLink to={`/addTutorials`}>Add Tutorial</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={`/myAddedTutorials`}>My Added Tutorial</NavLink>
-                                </li>
+                                    <li>
+                                        <NavLink to={`/addTutorials`}>Add Tutorial</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={`/myAddedTutorials`}>My Added Tutorial</NavLink>
+                                    </li>
                                 </>
                             }
                             {
@@ -118,7 +126,7 @@ const NavBar = () => {
                             }
 
                             <li><NavLink to={`/messages`}>Messages</NavLink></li>
-                            <li><NavLink to={`/settings`}>Settings</NavLink></li>
+                            <li><NavLink to={`/profile`}>Profile</NavLink></li>
                             <li><NavLink to={`/help`}>Help</NavLink></li>
                             {
                                 user &&
