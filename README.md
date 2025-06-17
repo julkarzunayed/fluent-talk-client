@@ -4,9 +4,9 @@ FluentTalk is a platform where users can Learn language based on users favorite 
 
 ---
 
-## Features
+## Features-Admin
 
-* Firebase Authentication added to create users spcific identity. Firebase-admin is immpliment in the backend to secure some APIs.
+* To ferifi the user token in backend firebase-admin is implimented in backend.
 
 ---
 
@@ -26,7 +26,7 @@ FluentTalk is a platform where users can Learn language based on users favorite 
    npm install
    ```
 
-### Firebase Setup
+### Firebase-admin 
 
 1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
 
