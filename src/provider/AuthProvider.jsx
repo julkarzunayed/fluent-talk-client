@@ -3,8 +3,6 @@ import { AuthContext } from '../contexts/AuthContext';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import axios from 'axios';
-import useDBUser from '../apis/useDBUser';
-import useAxiosSecure from '../hokes/useAxiosSecure';
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);

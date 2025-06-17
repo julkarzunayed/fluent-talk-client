@@ -24,8 +24,8 @@ const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
                                         <th>
                                             #
                                         </th>
-                                        <th>Tutor</th>
                                         <th>Language</th>
+                                        <th>Reviewed</th>
                                         <th>Price </th>
                                         <th></th>
                                     </tr>

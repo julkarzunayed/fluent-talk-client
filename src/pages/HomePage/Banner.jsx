@@ -9,7 +9,8 @@ const Banner = () => {
                 <div className="flex-1 flex  items-center pl-5">
                     <div className="py-10">
 
-                        <h1 className="text-4xl font-bold flex flex-wrap gap-2">Learning is more
+                        <h1 className="text-4xl font-bold flex flex-wrap gap-2">
+                            <span className='text-black'>Learning is more</span>
                             <span className='text-orange-600 font-black'>
                                 <Typewriter
                                     words={['Easy!', 'Effective!', 'Productive!']}
@@ -19,7 +20,7 @@ const Banner = () => {
                                 />
                             </span>
                         </h1>
-                        <p className="">
+                        <p className="text-black">
                             Learning is more productive and more easy.
                         </p>
                     </div>

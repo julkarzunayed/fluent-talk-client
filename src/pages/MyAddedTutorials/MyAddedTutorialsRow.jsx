@@ -48,12 +48,12 @@ const MyAddedTutorialsRow = ({ tutorial, index }) => {
             <td>
                 <div className="flex items-center gap-3">
                     <div>
-                        <div className="font-bold  ">{tutorial?.tutorName}</div>
+                        <div className="font-bold  ">{tutorial?.language}</div>
                     </div>
                 </div>
             </td>
             <td className='font-semibold'>
-                {tutorial?.language}
+                {tutorial?.review?.length || 0}
             </td>
             <td>
                 {tutorial?.price} $
