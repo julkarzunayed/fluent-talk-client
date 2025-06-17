@@ -1,12 +1,12 @@
-# FluentTalk
+# FluentTalk-Client
 
-FluentTalk is a platform where users can 
+FluentTalk is a platform where users can Learn language based on users favorite tutor an if a user create an account as learner and after some time he or she want to become a tutor by applying fo tutor. 
 
 ---
 
 ## Features
 
-* Firebase Authentication 
+* Firebase Authentication added to create users spcific identity. Firebase-admin is immpliment in the backend to secure some APIs.
 
 ---
 
@@ -16,16 +16,11 @@ FluentTalk is a platform where users can
 1. Clone the repository:
 
    ```bash
-   git clone 
+   git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-julkarzunayed
    ```
 
-2. Navigate to the project directory:
 
-   ```bash
-   cd hobbyhub
-   ```
-
-3. Install dependencies:
+2. Install dependencies:
 
    ```bash
    npm install
