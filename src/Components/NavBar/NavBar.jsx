@@ -54,7 +54,7 @@ const NavBar = () => {
             <Link to={`/`}>
                 <h2 className="text-2xl font-bold">FluentTalk</h2>
             </Link>
-
+            {/* links in navBar */}
             <div className="hidden md:block">
                 <ul className='*:p-2 *:hover:bg-gray-100 flex'>
                     <li><NavLink to={`/`}>Home</NavLink></li>
@@ -79,7 +79,7 @@ const NavBar = () => {
 
 
 
-            <div onClick={() => setShowLinks(false)} className={`${showLinks ? '' : 'hidden'} fixed  bg-amber-20 w-screen h-[200vh] z-30`}>
+            <div onClick={() => setShowLinks(false)} className={`${showLinks ? '' : 'hidden'} fixed left-0 bg-black opacity-15 w-screen h-[200vh] z-30`}>
 
             </div>
             <div className="">

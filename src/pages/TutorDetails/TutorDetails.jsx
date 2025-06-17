@@ -7,7 +7,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const TutorDetails = () => {
-    const { dbUser } = useAuth()
+    const { dbUser, user } = useAuth()
     const [tutor] = useLoaderData();
 
     const hanDleBookTutorial = () => {
@@ -90,15 +90,27 @@ const TutorDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center gap-4">
-                    <button
-                        onClick={hanDleBookTutorial}
-                        className='btn flex-1 border border-orange-500'>Book Tutor
-                    </button>
-                    <button
-                        className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'><FaRegHeart size={25} />
-                    </button>
-                </div>
+                {
+                    tutor?.tutorEmail === user?.email ?
+                        <div className="flex items-center gap-4">
+                            <Link
+                                to={`/editTutorial/${tutor?._id}`}
+                                className='btn flex-1 border border-orange-500'>
+                                Edit Tutorial
+                            </Link>
+                        </div>
+                        :
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={hanDleBookTutorial}
+                                className='btn flex-1 border border-orange-500'>Book Tutor
+                            </button>
+                            <button
+                                className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'><FaRegHeart size={25} />
+                            </button>
+                        </div>
+                }
+
             </div>
 
         </div>
