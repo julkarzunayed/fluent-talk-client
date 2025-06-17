@@ -100,7 +100,7 @@ const AddTutorial = () => {
                             defaultValue='Select a Language'>
                             <option disabled={true}>Select a Language</option>
                             {
-                                languages?.map(language => <option >{language?.languageName}</option>)
+                                languages?.map(language => <option key={language.id} >{language?.languageName}</option>)
                             }
                         </select>
                     </fieldset>
@@ -132,6 +132,7 @@ const AddTutorial = () => {
                 <input
                     className='btn w-full bg-orange-500 text-white'
                     type="submit"
+                    role='button'
                     value='Add Tutorial' />
             </form>
         </div>

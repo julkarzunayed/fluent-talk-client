@@ -13,7 +13,7 @@ const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
                     <div className="">
                         <div className="flex justify-center my-8">
                             <h1 className="text-3xl font-bold">
-                                Total Booked Tutorials: {tutorials?.length}
+                                Total Added Tutorials: {tutorials?.length}
                             </h1>
                         </div>
                         <div className="overflow-x-auto">
