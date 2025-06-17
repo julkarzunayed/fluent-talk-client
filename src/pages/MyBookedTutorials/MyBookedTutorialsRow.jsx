@@ -4,6 +4,7 @@ import { MdDelete } from "react-icons/md";
 import Swal from 'sweetalert2';
 import useMyBookedTutorials from '../../apis/useMyBookedTutorials';
 import useAuth from '../../hokes/useAuth';
+import { FaRegHeart } from 'react-icons/fa';
 
 const MyBookedTutorialsRow = ({ tutorial, index }) => {
     const { user } = useAuth();
@@ -54,6 +55,11 @@ const MyBookedTutorialsRow = ({ tutorial, index }) => {
             </td>
             <td>Purple</td>
             <th className='flex items-center flex-wrap justify-center'>
+                <Link
+                    to={`/tutorDetails/${tutorial?.tutorial_id}`}
+                    className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'>
+                    <FaRegHeart size={20} />
+                </Link>
                 <button
                     onClick={handleTutorialDelete}
                     className=" text-red-500 hover:bg-base-200 cursor-pointer p-0.5">

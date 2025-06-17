@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hokes/useAuth';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router';
 import useMyAddedTutorials from '../../apis/useMyAddedTutorials';
@@ -64,6 +63,7 @@ const EditTutorial = () => {
                                 text: "Tutorial successfully Updated.",
                                 icon: "success"
                             });
+                            navigate(`/tutorDetails/${tutorial?._id}`)
                         }
                         // console.log(res)
                     })

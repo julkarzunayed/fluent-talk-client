@@ -2,13 +2,23 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { IoMdHeart } from "react-icons/io";
 import { FaGraduationCap, FaRegHeart } from 'react-icons/fa';
+import { LuHeartOff } from "react-icons/lu";
 import useAuth from '../../hokes/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import useMyAddedTutorials from '../../apis/useMyAddedTutorials';
+import { IoHeartDislikeSharp } from 'react-icons/io5';
 
 const TutorDetails = () => {
+    const { myAddedTutorialPatch } = useMyAddedTutorials()
     const { dbUser, user } = useAuth()
     const [tutor] = useLoaderData();
+
+    const isReviewed = tutor?.review?.includes(user.email);
+    console.log(isReviewed)
+    const data = {
+        review: user?.email,
+    }
 
     const hanDleBookTutorial = () => {
         const tutorialBookingInfo = {
@@ -34,6 +44,32 @@ const TutorDetails = () => {
             })
     }
     console.log(tutor)
+    const handleReviewUpdate = () => {
+        if (isReviewed) {
+            data.pull = true
+        }
+        else {
+            data.push = true
+        }
+        // if(tutor?.review)
+        myAddedTutorialPatch(user.email, tutor?._id, data)
+            .then(res => {
+                if (res.modifiedCount) {
+                    Swal.fire({
+                        title: `${isReviewed ? 'Detest' : 'Loved'}`,
+                        text: `${isReviewed ? 'Added Loved review' : 'Removed Loved Review'}`,
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 800);
+                }
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
     return (
         <div className='max-w-5xl relative mx-auto my-10 bg-base-200'>
             <div className="relative border-b border-orange-300">
@@ -69,9 +105,11 @@ const TutorDetails = () => {
                         <p className="">Tutor ID: {tutor?.tutorId}</p>
                     </div>
                     <div className="">
-                        <p className="">
+                        <p className="flex items-center gap-1">
                             <IoMdHeart size={20} color='red' />
-                            { }
+                            <span className='font-bold text-xl'>
+                                {tutor?.review?.length || 0 }
+                            </span>
                         </p>
                         <p className="font-bold text-2xl">{tutor?.price} $</p>
                     </div>
@@ -105,9 +143,21 @@ const TutorDetails = () => {
                                 onClick={hanDleBookTutorial}
                                 className='btn flex-1 border border-orange-500'>Book Tutor
                             </button>
-                            <button
-                                className='shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600'><FaRegHeart size={25} />
-                            </button>
+                            {
+                                !isReviewed ?
+                                    <button
+                                        onClick={handleReviewUpdate}
+                                        className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600`}>
+                                        <FaRegHeart size={25} />
+                                    </button>
+                                    :
+                                    <button
+                                        onClick={handleReviewUpdate}
+                                        className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-gray-600`}>
+                                        <IoHeartDislikeSharp size={30} />
+                                    </button>
+                            }
+
                         </div>
                 }
 
