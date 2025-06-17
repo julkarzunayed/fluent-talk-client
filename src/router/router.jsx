@@ -7,7 +7,6 @@ import SignUp from '../pages/SignUp/SignUp';
 import LogIn from '../pages/LogIn/LogIn';
 import AddTutorial from '../pages/AddTutorial/AddTutorial';
 import PrivetRout from '../routers/PrivetRout';
-import FindTutors from '../pages/FindTutors/FindTutors';
 import Loader from '../pages/Loader/Loader';
 import TutorDetails from '../pages/TutorDetails/TutorDetails';
 import MyBookedTutorials from '../pages/MyBookedTutorials/MyBookedTutorials';
@@ -15,6 +14,7 @@ import MyAddedTutorials from '../pages/MyAddedTutorials/MyAddedTutorials';
 import Settings from '../pages/Settings/Settings';
 import ProfilePage from '../pages/Profile/ProfilePage';
 import EditTutorial from '../pages/EditTutorial/EditTutorial';
+import FindTutorialPage from '../pages/FindTutors/FindTutorialPage';
 
 const router = createBrowserRouter([
     {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/findTutors',
-                loader: () => fetch(`http://localhost:3000/tutorial`),
-                Component: FindTutors,
+                // loader: () => fetch(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial`),
+                Component: FindTutorialPage,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                 element: <PrivetRout>
                     <TutorDetails />
                 </PrivetRout>,
-                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                loader: ({ params }) => fetch(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial?tutorialId=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
             {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
                 element: <PrivetRout>
                     <EditTutorial />
                 </PrivetRout>,
-                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                loader: ({ params }) => fetch(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial?tutorialId=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
             {

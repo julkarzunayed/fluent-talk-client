@@ -42,7 +42,7 @@ FluentTalk is a platform where users can
 
 1. Start the development server:
 
-2. Open the app in your browser at `http://localhost:3000`.
+2. Open the app in your browser at ` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app`.
 
 ---
 

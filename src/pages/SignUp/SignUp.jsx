@@ -14,7 +14,7 @@ const SignUp = () => {
 
     //DB User Creation 
     const handleDBUserCreation = (userInfo) => {
-        axios.post(`http://localhost:3000/user`, userInfo)
+        axios.post(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/user`, userInfo)
             .then(result => {
                 if (result.data.insertedId) {
 

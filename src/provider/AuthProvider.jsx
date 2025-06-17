@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            axios.get(`http://localhost:3000/user?email=${user.email}`)
+            axios.get(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/user?email=${user.email}`)
                 .then(response => setDBUser(response.data))
                 .catch(err => {
                     console.log(err)
