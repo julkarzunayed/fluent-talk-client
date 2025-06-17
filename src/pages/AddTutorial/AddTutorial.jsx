@@ -45,7 +45,7 @@ const AddTutorial = () => {
             description
         }
         // console.log(tutorialInfo);
-        axios.post(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial`, tutorialInfo)
+        axios.post(`https://fluent-talk-server-pink.vercel.app/tutorial`, tutorialInfo)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {

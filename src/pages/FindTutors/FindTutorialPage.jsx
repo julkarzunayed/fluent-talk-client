@@ -1,30 +1,39 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import TutorCard from './TutorCard';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import Loader from '../Loader/Loader';
 import Error from '../Error/Error';
 import FindTutors from './FindTutors';
 import { LuSearchX } from 'react-icons/lu';
+import { useLocation } from 'react-router';
 
 
 const FindTutorialPage = () => {
+    const location = useLocation();
+    const state = location?.state
     const [search, setSearch] = useState();
     const [tutors, setTutors] = useState();
     useEffect(() => {
-            fetch(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial${search ? `?search=${search}` :''}`)
-                .then(res => res.json())
+        fetch(`https://fluent-talk-server-pink.vercel.app/tutorial${search ? `?search=${search}` : ''}`)
+            .then(res => res.json())
             .then(data => setTutors(data))
     }, [search])
 
     // const { isPending, error, isError, data } = useQuery({
     //     queryKey: ['tutorialData', search],
-    //     queryFn: () => fetch(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/tutorial`)
+    //     queryFn: () => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial`)
     //         .then(res => res.json())
     // })
     // const tutors = data;
     // if (isPending) return <Loader />
     // if (isError) return <Error />
-    console.log(search);
+    useEffect(() => {
+        if (state) {
+            setSearch(state)
+        }
+    }, [])
+
+    console.log(location);
     const isTutors = Boolean(tutors?.length);
     return (
         <div className='pb-10'>
@@ -35,6 +44,7 @@ const FindTutorialPage = () => {
                 <input
                     type="text"
                     placeholder="Search"
+                    defaultValue={location.state}
                     // onClickCapture={(e) => setSearch(e.target.value)}
                     onChange={(e) => setSearch(e.target.value)}
                     className="input input-error" />
@@ -46,7 +56,7 @@ const FindTutorialPage = () => {
                 isTutors ||
                 <div className="flex items-center justify-center">
                     <h2 className="text-2xl font-bold flex items-center justify-center gap-3">
-                        <LuSearchX color='red' size={30}/> No tutors found
+                        <LuSearchX color='red' size={30} /> No tutors found
                     </h2>
                 </div>
             }

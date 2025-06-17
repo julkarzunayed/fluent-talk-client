@@ -16,7 +16,7 @@ FluentTalk is a platform where users can
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/hobbyhub.git
+   git clone 
    ```
 
 2. Navigate to the project directory:
@@ -42,7 +42,7 @@ FluentTalk is a platform where users can
 
 1. Start the development server:
 
-2. Open the app in your browser at ` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app`.
+2. Open the app in your browser at `https://fluent-talk-server-pink.vercel.app`.
 
 ---
 

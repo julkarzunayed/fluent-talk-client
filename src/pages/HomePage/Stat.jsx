@@ -12,9 +12,9 @@ const Stat = () => {
     const [tutorCount, setTutorCount ]= useState(0);
 
     useEffect(() => {
-        axios.get(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/user/student`)
+        axios.get(`https://fluent-talk-server-pink.vercel.app/user/student`)
             .then(res => setStudentCount(res.data))
-        axios.get(` https://fluent-talk-server-oup0da1mw-julkarzunayeds-projects.vercel.app/user/tutor`)
+        axios.get(`https://fluent-talk-server-pink.vercel.app/user/tutor`)
             .then(res => setTutorCount(res.data))
     }, [])
     // console.log(studentCount, tutorCount);
@@ -27,7 +27,7 @@ const Stat = () => {
                     </div>
                     <div className="stat-title">Tutors</div>
                     <div className="stat-value">{tutorCount}+</div>
-                    <div className="stat-desc">Jan 1st - Feb 1st</div>
+                    {/* <div className="stat-desc">Jan 1st - Feb 1st</div> */}
                 </div>
 
                 <div className="stat">
@@ -36,7 +36,7 @@ const Stat = () => {
                     </div>
                     <div className="stat-title">Reviews</div>
                     <div className="stat-value">4,200</div>
-                    <div className="stat-desc">↗︎ 400 (22%)</div>
+                    {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
                 </div>
 
                 <div className="stat">
@@ -45,16 +45,16 @@ const Stat = () => {
                     </div>
                     <div className="stat-title">Learners</div>
                     <div className="stat-value">{studentCount}+</div>
-                    <div className="stat-desc">↗︎ 400 (22%)</div>
+                    {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
                 </div>
 
                 <div className="stat">
                     <div className="stat-figure text-orange-600">
                         <IoLanguageSharp size={40} />
                     </div>
-                    <div className="stat-title">Language <span>&#x1f1e7;&#x1f1e9;</span></div>
+                    <div className="stat-title">Language </div>
                     <div className="stat-value">1,200</div>
-                    <div className="stat-desc">↘︎ 90 (14%)</div>
+                    {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
                 </div>
             </div>
         </div>
