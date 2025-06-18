@@ -22,13 +22,13 @@ const TutorDetails = () => {
 
     const hanDleBookTutorial = () => {
         const tutorialBookingInfo = {
-            tutorial_id: tutor._id,
-            student_email: dbUser.email,
-            tutor_name: tutor.tutorName,
-            tutorial_language: tutor.language
+            tutorial_id: tutor?._id,
+            student_email: dbUser?.email,
+            tutor_name: tutor?.tutorName,
+            tutorial_language: tutor?.language
         }
         console.log(tutorialBookingInfo);
-        axios.post(`https://fluent-talk-server-pink.vercel.app/tutorialBooking`, tutorialBookingInfo)
+        axios.post(`http://localhost:3000/tutorialBooking`, tutorialBookingInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

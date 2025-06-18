@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 
 
 const axiosInstance = axios.create({
-    baseURL: 'https://fluent-talk-server-pink.vercel.app/',
+    baseURL: 'http://localhost:3000/',
 })
 
 const useAxiosSecure = () => {

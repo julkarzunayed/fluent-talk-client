@@ -12,9 +12,9 @@ const Stat = () => {
     const [tutorCount, setTutorCount ]= useState(0);
 
     useEffect(() => {
-        axios.get(`https://fluent-talk-server-pink.vercel.app/user/student`)
+        axios.get(`http://localhost:3000/user/student`)
             .then(res => setStudentCount(res.data))
-        axios.get(`https://fluent-talk-server-pink.vercel.app/user/tutor`)
+        axios.get(`http://localhost:3000/user/tutor`)
             .then(res => setTutorCount(res.data))
     }, [])
     // console.log(studentCount, tutorCount);

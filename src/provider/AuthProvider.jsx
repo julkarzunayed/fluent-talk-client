@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import axios from 'axios';
+
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -19,9 +21,13 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    const googleLogin = () => {
+        return signInWithPopup(auth, googleProvider)
+    }
+
     useEffect(() => {
         if (user) {
-            axios.get(`https://fluent-talk-server-pink.vercel.app/user?email=${user.email}`)
+            axios.get(`http://localhost:3000/user?email=${user.email}`)
                 .then(response => setDBUser(response.data))
                 .catch(err => {
                     console.log(err)
@@ -53,6 +59,7 @@ const AuthProvider = ({ children }) => {
         isLoading,
         createUser,
         logInUser,
+        googleLogin,
         signOutUser,
     }
     return (
