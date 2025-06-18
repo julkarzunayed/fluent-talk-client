@@ -27,8 +27,8 @@ const MyBookedTutorialsList = ({ myBookedTutorialsPromise }) => {
                                         </th>
                                         <th>Tutor</th>
                                         <th>Language</th>
-                                        <th>Favorite </th>
-                                        <th></th>
+                                        <th>Price </th>
+                                        <th>Acton</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -45,6 +45,13 @@ const MyBookedTutorialsRow = ({ tutorial, index }) => {
             </th>
             <td>
                 <div className="flex items-center gap-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                            <img
+                                src={tutorial?.tutorImage || 'https://placehold.co/550x400/444444/ff7800.png?text=Avater'}
+                                alt="Avatar Tailwind CSS Component" />
+                        </div>
+                    </div>
                     <div>
                         <div className="font-bold  ">{tutorial?.tutor_name}</div>
                     </div>
@@ -53,7 +60,9 @@ const MyBookedTutorialsRow = ({ tutorial, index }) => {
             <td className='font-semibold'>
                 {tutorial?.tutorial_language}
             </td>
-            <td>Purple</td>
+            <td>
+                {tutorial?.price || '$$'} $
+            </td>
             <th className='flex items-center flex-wrap justify-center'>
                 <Link
                     to={`/tutorDetails/${tutorial?.tutorial_id}`}
@@ -71,7 +80,7 @@ const MyBookedTutorialsRow = ({ tutorial, index }) => {
                     details
                 </Link>
             </th>
-        </tr>
+        </tr >
     );
 };
 

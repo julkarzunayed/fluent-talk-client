@@ -5,7 +5,7 @@ import useDBUserCreation from '../../hokes/useDBUserCreation';
 import Swal from 'sweetalert2';
 
 const SocialLogIn = () => {
-    const { dbUser,  user, googleLogin } = useAuth()
+    const { googleLogin } = useAuth()
     const { handleDBUserCreation } = useDBUserCreation()
     const location = useLocation();
     const role = location?.state?.role;

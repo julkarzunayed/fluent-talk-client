@@ -10,7 +10,7 @@ const MyBookedTutorials = () => {
         <div>
             <Suspense>
                 <MyBookedTutorialsList
-                    myBookedTutorialsPromise={myBookedTutorialsPromise(user.email)} />
+                    myBookedTutorialsPromise={myBookedTutorialsPromise(user?.email)} />
             </Suspense>
         </div>
     );

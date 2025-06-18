@@ -11,7 +11,7 @@ import { IoHeartDislikeSharp } from 'react-icons/io5';
 
 const TutorDetails = () => {
     const { myAddedTutorialPatch } = useMyAddedTutorials()
-    const { dbUser, user } = useAuth()
+    const {  user } = useAuth()
     const [tutor] = useLoaderData();
 
     const isReviewed = tutor?.review?.includes(user.email);
@@ -23,8 +23,10 @@ const TutorDetails = () => {
     const hanDleBookTutorial = () => {
         const tutorialBookingInfo = {
             tutorial_id: tutor?._id,
-            student_email: dbUser?.email,
+            student_email: user?.email,
             tutor_name: tutor?.tutorName,
+            price: tutor?.price,
+            tutorImage: tutor?.tutorImage,
             tutorial_language: tutor?.language
         }
         console.log(tutorialBookingInfo);
