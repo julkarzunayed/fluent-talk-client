@@ -28,15 +28,18 @@ const FindTutorialPage = () => {
     // if (isPending) return <Loader />
     // if (isError) return <Error />
     useEffect(() => {
-        if (state) {
-            setSearch(state)
-        }
+        setTimeout(() => {
+            if (state) {
+                setSearch(state)
+            }
+        }, 500);
     }, [])
 
     console.log(location);
+    console.log('state==', state);
     const isTutors = Boolean(tutors?.length);
     return (
-        <div className='pb-10'>
+        <div className={`pb-10`}>
             <h1 className="text-center text-4xl font-bold my-5">
                 Find a Teacher for You
             </h1>
@@ -53,7 +56,7 @@ const FindTutorialPage = () => {
                 <FindTutors tutors={tutors} />
             </Suspense>
             {
-                isTutors ||
+                isTutors || 
                 <div className="flex items-center justify-center">
                     <h2 className="text-2xl font-bold flex items-center justify-center gap-3">
                         <LuSearchX color='red' size={30} /> No tutors found

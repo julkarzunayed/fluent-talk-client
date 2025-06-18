@@ -4,6 +4,12 @@ FluentTalk is a platform where users can Learn language based on users favorite 
 
 ---
 
+## Live Links
+
+* [Firebase Live link](https://fluent-talk-auth.firebaseapp.com/).
+* [Vercel Live link](https://fluent-talk-server-pink.vercel.app/).
+
+---
 ## Features-Admin
 
 * To ferifi the user token in backend firebase-admin is implimented in backend.
@@ -26,7 +32,7 @@ FluentTalk is a platform where users can Learn language based on users favorite 
    npm install
    ```
 
-### Firebase-admin 
+### Firebase
 
 1. Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
 
@@ -61,6 +67,7 @@ FluentTalk is a platform where users can Learn language based on users favorite 
 * `sweetalert2`
 * `motion/react`
 * `react-simple-typewriter`
+* `react-tooltip`
 * 
 
 ---

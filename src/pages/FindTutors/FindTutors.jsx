@@ -2,7 +2,6 @@ import React from 'react';
 import TutorCard from './TutorCard';
 
 const FindTutors = ({tutors}) => {
-    
 
     return (
         <div className='p-5 max-w-7xl mx-auto'>

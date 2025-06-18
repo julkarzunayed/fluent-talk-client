@@ -11,7 +11,7 @@ const Banner = () => {
 
                         <h1 className="text-4xl font-bold flex flex-wrap gap-2">
                             <span className='text-black'>Learning is more</span>
-                            <span className='text-orange-600 font-black'>
+                            <span className='text-orange-600 font-black min-w-[200px]'>
                                 <Typewriter
                                     words={['Easy!', 'Effective!', 'Productive!']}
                                     loop={false}

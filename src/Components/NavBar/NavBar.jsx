@@ -1,3 +1,4 @@
+import { Tooltip } from 'react-tooltip'
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../hokes/useAuth';
@@ -11,11 +12,11 @@ const NavBar = () => {
     const { setIsDark, isDark } = useTheme();
     const { user, dbUser, signOutUser, setDBUser } = useAuth();
     const [showLinks, setShowLinks] = useState(false);
-    
+
     const handleTheme = (e) => {
         e.preventDefault();
         const currentTheme = document.documentElement.getAttribute("data-theme")
-        const newTheme = currentTheme=== 'light' ? 'dracula' : 'light'
+        const newTheme = currentTheme === 'light' ? 'dracula' : 'light'
         document.documentElement.setAttribute("data-theme", newTheme);
         console.log(currentTheme)
     }
@@ -52,12 +53,13 @@ const NavBar = () => {
 
     return (
         <div className="p-2 min-h-14 flex items-center justify-between relative">
+
             <Link to={`/`}>
                 <h2 className="text-2xl font-bold">FluentTalk</h2>
             </Link>
             {/* links in navBar */}
             <div className="hidden md:block">
-                <ul className='*:p-2 *:hover:bg-base-300 *:hover:border-b *:hover:border-b-gray-400 flex'>
+                <ul className='*:p-2 *:pb-1 *:border-b-4 *:border-b-base-100 *:hover:border-b-gray-400 flex'>
                     <li><NavLink to={`/`}>Home</NavLink></li>
                     <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
                     {
@@ -80,20 +82,28 @@ const NavBar = () => {
 
 
 
+
             <div onClick={() => setShowLinks(false)} className={`${showLinks ? '' : 'hidden'} fixed left-0 bg-black opacity-15 w-screen h-[200vh] z-30`}>
 
             </div>
             <div className="">
+                <Tooltip className='z-50' anchorSelect=".my-anchor-element" place="bottom">
+                    {dbUser?.name}
+                </Tooltip>
+                {/* Navigation popup box */}
                 {
-                    <div className={`transition duration-100  ${showLinks ? 'scale-100' : 'scale-0'} absolute right-5 top-15 bg-white  rounded-sm shadow-2xl z-40`}>
+                    <div className={`transition text-black duration-100  ${showLinks ? 'scale-100' : 'scale-0'} absolute right-5 top-15 bg-white  rounded-sm shadow-2xl z-40`}>
                         {
                             user ?
                                 <div className=" flex sm:hidden items-center gap-1 pt-3 p-2">
-                                    <div
-                                        style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
-                                        className=" border border-gray-400 w-7 h-7 rounded-sm bg-center bg-cover">
+                                    {/*   user Profile pic */}
+                                    <a className="my-anchor-element">
+                                        <div
+                                            style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
+                                            className="my-anchor-element border border-gray-400 w-7 h-7 rounded-sm bg-center bg-cover">
 
-                                    </div>
+                                        </div>
+                                    </a>
                                     <h3 className="font-bold text-sm">{dbUser?.name}</h3>
                                 </div>
                                 :
@@ -107,7 +117,7 @@ const NavBar = () => {
                         }
 
                         {/* All Navigation Links */}
-                        <ul className='*:p-2 text-black *:px-5 *:w-full *:hover:bg-gray-100'>
+                        <ul className='*:p-2  *:px-5 *:w-full *:hover:bg-gray-100'>
                             <li><NavLink to={`/`}>Home</NavLink></li>
                             <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
                             {
@@ -172,11 +182,14 @@ const NavBar = () => {
                     {/* User Profile */}
                     {
                         user &&
-                        <div
-                            style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
-                            className="hidden sm:block border border-gray-400 w-9 h-9 rounded-full bg-center bg-cover">
 
-                        </div>
+                        <Link to={`/profile`} className="my-anchor-element">
+                            <div
+                                style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
+                                className="hidden sm:block border border-gray-400 w-9 h-9 rounded-full bg-center bg-cover">
+
+                            </div>
+                        </Link>
                     }
                     {/* Navigation buttons */}
                     <button
@@ -189,7 +202,7 @@ const NavBar = () => {
 
 
 
-        </div>
+        </div >
     );
 };
 

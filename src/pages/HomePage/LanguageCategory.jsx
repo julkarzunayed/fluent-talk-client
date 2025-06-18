@@ -10,8 +10,7 @@ const LanguageCategory = () => {
             .then(res => res.json())
             .then(data => setLanguages(data));
     }, []);
-    const filteredLanguages = languages?.filter(language => language.id < (showAll ? languages?.length : 10) )
-    console.log(filteredLanguages)
+    const filteredLanguages = languages?.filter(language => language.id < (showAll ? languages?.length : 10))
     return (
         <div className='p-5'>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ">
@@ -21,10 +20,12 @@ const LanguageCategory = () => {
                     />)
                 }
             </div>
-            <button 
-            onClick={() => setShowAll(!showAll)}
-            className='my-5'>
-                Show {showAll ? 'Less' : 'All'}
+            <button
+                onClick={() => setShowAll(!showAll)}
+                className='my-5 ml-2 font-bold'>
+                - <span className="underline ">
+                    Show {showAll ? 'Less' : 'All'}
+                </span>
             </button>
         </div>
     );
