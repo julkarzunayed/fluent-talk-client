@@ -7,7 +7,7 @@ import useDBUserCreation from '../../hokes/useDBUserCreation';
 import SocialLogIn from '../../Components/SocialLogIn/SocialLogIn';
 
 const SignUp = () => {
-    const { createUser, googleLogin } = useAuth();
+    const { createUser } = useAuth();
     const { handleDBUserCreation } = useDBUserCreation()
     const navigate = useNavigate();
     const location = useLocation();
@@ -15,45 +15,6 @@ const SignUp = () => {
     const isRole = Boolean(role);
     console.log(location);
 
-    //DB User Creation 
-    // const handleDBUserCreation = (userInfo) => {
-    //     axios.post(`http://localhost:3000/user`, userInfo)
-    //         .then(result => {
-    //             if (result.data.insertedId) {
-
-    //                 Swal.fire({
-    //                     position: "center",
-    //                     icon: "success",
-    //                     title: "You have successfully signed up!",
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
-
-    //                 navigate(location?.state || '/')
-    //             }
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         })
-    // }
-
-    const handleGoogleLogIn = () => {
-        console.log('clicked gooogle')
-        googleLogin()
-            .then(result => {
-                const userInfo = {
-                    email: result?.user?.email,
-                    name: result?.user?.displayName,
-                    photo_URL: result?.user?.photoURL,
-                    role: role,
-                }
-                console.log(userInfo);
-
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
 
     const handleEmailPasswordLogin = e => {
         e.preventDefault()

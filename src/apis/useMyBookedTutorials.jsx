@@ -4,12 +4,16 @@ import useAxiosSecure from '../hokes/useAxiosSecure';
 const useMyBookedTutorials = () => {
     const axiosSecure = useAxiosSecure();
 
-    const myBookedTutorialsPromise = email => {
-        return axiosSecure.get(`tutorialBooking?email=${email}`)
+    const myBookedTutorialsPromise = (email, tutorial_id) => {
+        console.log(tutorial_id)
+        return axiosSecure.get(`tutorialBooking?email=${email}${tutorial_id ? `&tutorial_id=${tutorial_id}` : ''}`)
             .then(res => res.data);
     }
+    // const myTutorialBookingCheckPromise = (email, tutorial_id) => {
+    //     return axiosSecure.get(`tutorialBooking?email=${email}&tutorial_id=${tutorial_id}`)
+    //         .then(res => res.data);
+    // }
     const myBookedTutorialsDelete = (email, data) => {
-        console.log(data)
         return axiosSecure.delete(`tutorialBooking?email=${email}&_id=${data}`)
             .then(res => res.data);
     }
@@ -18,5 +22,7 @@ const useMyBookedTutorials = () => {
         myBookedTutorialsDelete
     };
 };
+
+//`&tutorial_id=${
 
 export default useMyBookedTutorials;

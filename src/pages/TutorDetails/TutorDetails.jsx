@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { IoMdHeart } from "react-icons/io";
 import { FaGraduationCap, FaRegHeart } from 'react-icons/fa';
@@ -8,17 +8,33 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import useMyAddedTutorials from '../../apis/useMyAddedTutorials';
 import { IoHeartDislikeSharp } from 'react-icons/io5';
+import useMyBookedTutorials from '../../apis/useMyBookedTutorials';
 
 const TutorDetails = () => {
     const { myAddedTutorialPatch } = useMyAddedTutorials()
-    const {  user } = useAuth()
+    const { myBookedTutorialsPromise } = useMyBookedTutorials();
+    const [isBooked, setIsBooked] = useState(false);
+    const { user } = useAuth();
     const [tutor] = useLoaderData();
 
+    // To Check if user is booked the Tutorial or not 
+    useEffect(() => {
+        myBookedTutorialsPromise(user?.email, tutor?._id)
+            .then(res => {
+                if (tutor?._id === res[0].tutorial_id) {
+                    setIsBooked(true)
+                }
+                
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+
+
     const isReviewed = tutor?.review?.includes(user.email);
-    console.log(isReviewed)
-    const data = {
-        review: user?.email,
-    }
+
 
     const hanDleBookTutorial = () => {
         const tutorialBookingInfo = {
@@ -45,8 +61,11 @@ const TutorDetails = () => {
                 console.log(err);
             })
     }
-    console.log(tutor)
+
     const handleReviewUpdate = () => {
+        const data = {
+            review: user?.email,
+        }
         if (isReviewed) {
             data.pull = true
         }
@@ -60,11 +79,12 @@ const TutorDetails = () => {
                     Swal.fire({
                         title: `${isReviewed ? 'Detest' : 'Loved'}`,
                         text: `${isReviewed ? 'Added Loved review' : 'Removed Loved Review'}`,
-                        icon: "success"
+                        icon: "success",
+                        timer: 2000
                     });
                     setTimeout(() => {
                         window.location.reload();
-                    }, 800);
+                    }, 180);
                 }
                 console.log(res);
             })
@@ -110,7 +130,7 @@ const TutorDetails = () => {
                         <p className="flex items-center gap-1">
                             <IoMdHeart size={20} color='red' />
                             <span className='font-bold text-xl'>
-                                {tutor?.review?.length || 0 }
+                                {tutor?.review?.length || 0}
                             </span>
                         </p>
                         <p className="font-bold text-2xl">{tutor?.price} $</p>
@@ -141,10 +161,25 @@ const TutorDetails = () => {
                         </div>
                         :
                         <div className="flex items-center gap-4">
-                            <button
-                                onClick={hanDleBookTutorial}
-                                className='btn flex-1 border border-orange-500'>Book Tutor
-                            </button>
+                            {
+                                !isBooked ?
+                                    <button
+                                        onClick={hanDleBookTutorial}
+                                        className='btn flex-1 border border-orange-500'>
+                                        Book Tutor
+                                    </button>
+                                    :
+                                    <div className=' w-full'>
+                                        <p className="my-1 text-blue-400">Tutorial is already Booked</p>
+                                        <Link
+                                            to={'/myBookedTutorials'}
+                                            className='btn flex-1 border border-orange-500 w-full'>
+                                            Check Your Booking
+                                        </Link>
+                                    </div>
+
+
+                            }
                             {
                                 !isReviewed ?
                                     <button

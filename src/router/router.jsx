@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                 element: <PrivetRout>
                     <TutorDetails />
                 </PrivetRout>,
-                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorial_id=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
             {

@@ -27,6 +27,7 @@ const FindTutorialPage = () => {
     // const tutors = data;
     // if (isPending) return <Loader />
     // if (isError) return <Error />
+    // loader: ({ params }) => fetch(`http://localhost:3000/tutorial/byTutorId?tutorialId=${params.id}`),
     useEffect(() => {
         setTimeout(() => {
             if (state) {
