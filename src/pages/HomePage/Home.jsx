@@ -3,6 +3,7 @@ import Banner from './Banner';
 import Loader from '../Loader/Loader';
 import Stat from './Stat';
 import LanguageCategory from './LanguageCategory';
+import OurTeem from './OurTeem';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <div className="max-w-7xl mx-auto">
                 <Stat></Stat>
                 <LanguageCategory></LanguageCategory>
+                <OurTeem></OurTeem>
             </div>
         </div>
     );
