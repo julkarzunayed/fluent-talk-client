@@ -19,7 +19,9 @@ createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AuthProvider>
-          <RouterProvider router={router} />
+          <div className="font-titillium">
+            <RouterProvider router={router} />
+          </div>
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>

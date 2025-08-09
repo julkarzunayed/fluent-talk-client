@@ -4,7 +4,7 @@ import useTheme from '../../hokes/useTheme';
 const ThemeController = () => {
     const { theme, themeChanger } = useTheme();
     return (
-        <label onClick={themeChanger} className="swap swap-rotate">
+        <label onClick={themeChanger} className="swap swap-rotate text-gray-100">
             {/* this hidden checkbox controls the state */}
             <input type="checkbox" className="theme-controller" value="synthwave" />
 

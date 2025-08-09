@@ -39,7 +39,7 @@ const FindTutorialPage = () => {
     
     const isTutors = Boolean(tutors?.length);
     return (
-        <div className={`pb-10`}>
+        <div className={`py-10 bg-base-200`}>
             <h1 className="text-center text-4xl font-bold my-5">
                 Find a Teacher for You
             </h1>

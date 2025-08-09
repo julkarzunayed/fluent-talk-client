@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const TutorCard = ({ tutor }) => {
 
     return (
-        <div className='border border-gray-300 hover:border-gray-500 rounded-sm p-2 '>
+        <div className='bg-base-100 hover:shadow-xl hover:border-gray-500 rounded-sm p-2 '>
             <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
                 <div className="flex">
                     <figure className='  max-w-[150px] md:w-auto w-full'>

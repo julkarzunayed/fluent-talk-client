@@ -1,19 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sanchez:ital@0;1&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+
 @import "tailwindcss";
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
   name: "light";
-  default: true;
-  prefersdark: false;
-  color-scheme: light;
+  /* default: true; */
+  /* prefersdark: false; */
+  /* color-scheme: light; */
 
   --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(96.115% 0 0);
-  --color-base-300: oklch(92.416% 0.001 197.137);
+  --color-base-200: oklch(96% 0 252);
+  --color-base-300: oklch(92% 0.001 252);
   --color-base-content: oklch(27.807% 0.029 256.847);
-  --color-primary: oklch(49.12% 0.309 275.75);
+  --color-primary: oklch(27% 0.07 252); 
   --color-primary-content: oklch(89.824% 0.057 266.839);
-  --color-secondary: oklch(64.847% 0.287 348.092);
+  --color-secondary: oklch(80.4% 0.143 123);
   --color-secondary-content: oklch(100% 0 0);
   --color-accent: oklch(50.485% 0.316 2.054);
   --color-accent-content: oklch(100% 0 0);
@@ -47,14 +51,14 @@
 
 @plugin "daisyui/theme" {
   name: "dark";
-  prefersdark: true;
-  color-scheme: dark;
+  /* prefersdark: true; */
+  /* color-scheme: dark; */
 
   --color-base-100: oklch(15.918% 0.04 240);
   --color-base-200: oklch(10.155% 0.05 240);
   --color-base-300: oklch(5.176% 0.06 240);
   --color-base-content: oklch(85% 0.02 240);
-  --color-primary: oklch(50% 0.3 240);
+  --color-primary: oklch(0% 0.3 240);
   --color-primary-content: oklch(98% 0.01 240);
   --color-secondary: oklch(60% 0.3 120);
   --color-secondary-content: oklch(98% 0.01 120);
@@ -92,4 +96,11 @@ a.active{
     /* background-color: rgb(180, 180, 180); */
     text-decoration: underline;
     font-weight: bold;
+}
+
+.font-sanchez {
+  font-family: "Sanchez", serif;
+}
+.font-titillium {
+  font-family: "Titillium Web", sans-serif;
 }

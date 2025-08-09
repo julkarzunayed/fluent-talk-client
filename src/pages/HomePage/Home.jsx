@@ -7,9 +7,9 @@ import OurTeem from './OurTeem';
 
 const Home = () => {
     return (
-        <div>
+        <div className='bg-base-200 pb-10'>
             <Banner></Banner>
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-[1500px] mx-auto">
                 <Stat></Stat>
                 <LanguageCategory></LanguageCategory>
                 <OurTeem></OurTeem>
