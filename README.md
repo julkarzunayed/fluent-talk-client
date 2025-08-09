@@ -7,7 +7,7 @@ FluentTalk is a platform where users can Learn language based on users favorite 
 ## Live Links
 
 * [Firebase Live link](https://fluent-talk-auth.firebaseapp.com/).
-* [Vercel Live link](http://localhost:3000/).
+* [Vercel Live link](https://fluent-talk-server-pink.vercel.app/).
 
 ---
 ## Features-Admin
