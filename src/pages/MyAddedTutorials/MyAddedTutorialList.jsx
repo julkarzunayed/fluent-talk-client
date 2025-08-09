@@ -5,7 +5,7 @@ import MyAddedTutorialsRow from './MyAddedTutorialsRow';
 const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
     const tutorials = use(myAddedTutorialsPromise);
     console.log(tutorials)
-    const isTutorials = Boolean(tutorials.length);
+    const isTutorials = Boolean(tutorials?.length);
     return (
         <div>
             {
@@ -27,7 +27,7 @@ const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
                                         <th>Language</th>
                                         <th>Reviewed</th>
                                         <th>Price </th>
-                                        <th></th>
+                                        <th className='text-center'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>

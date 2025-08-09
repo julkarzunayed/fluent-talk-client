@@ -1,10 +1,11 @@
 import React from 'react';
+import { IoMdHeart } from 'react-icons/io';
 import { Link } from 'react-router';
 
 const TutorCard = ({ tutor }) => {
 
     return (
-        <div className='border border-gray-300 hover:border-black p-2 '>
+        <div className='border border-gray-300 hover:border-gray-500 rounded-sm p-2 '>
             <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
                 <div className="flex">
                     <figure className='  max-w-[150px] md:w-auto w-full'>
@@ -45,7 +46,12 @@ const TutorCard = ({ tutor }) => {
                     <div className="flex flex-col justify-between">
                         <div className="hidden sm:flex justify-between">
                             <p className="font-bold">{tutor?.price} $</p>
-                            <p className="">@</p>
+                            <p className=" flex items-center gap-3">
+                                <IoMdHeart size={17} color='red' />
+                                <span className='font-bold'>
+                                    { tutor?.review?.length || 0}
+                                </span>
+                            </p>
                         </div>
                         <Link to={`/tutorDetails/${tutor?._id}`}>
                             <button className='btn w-full '>Details</button>

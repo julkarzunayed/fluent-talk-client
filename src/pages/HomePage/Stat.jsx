@@ -12,12 +12,12 @@ const Stat = () => {
     const [tutorCount, setTutorCount ]= useState(0);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/user/student`)
+        axios.get(`https://fluent-talk-server-pink.vercel.app/user/student`)
             .then(res => setStudentCount(res.data))
-        axios.get(`http://localhost:3000/user/tutor`)
+        axios.get(`https://fluent-talk-server-pink.vercel.app/user/tutor`)
             .then(res => setTutorCount(res.data))
-    }, [])
-    // console.log(studentCount, tutorCount);
+    }, []);
+
     return (
         <div className="flex p-5">
             <div className="stats shadow mx-auto">

@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/findTutors',
-                // loader: () => fetch(`http://localhost:3000/tutorial`),
+                // loader: () => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial`),
                 Component: FindTutorialPage,
                 hydrateFallbackElement: <Loader></Loader>
             },
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                 element: <PrivetRout>
                     <TutorDetails />
                 </PrivetRout>,
-                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorial_id=${params.id}`),
+                loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorial_id=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
             {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
                 element: <PrivetRout>
                     <EditTutorial />
                 </PrivetRout>,
-                loader: ({ params }) => fetch(`http://localhost:3000/tutorial?tutorialId=${params.id}`),
+                loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorialId=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
             {

@@ -7,7 +7,6 @@ const PrivetRout = ({ children }) => {
 
     const { user, isLoading } = useAuth();
     const location = useLocation()
-    // console.log(location)
 
     if(isLoading){
         return Loader;

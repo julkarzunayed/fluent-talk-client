@@ -5,7 +5,7 @@ const useMyBookedTutorials = () => {
     const axiosSecure = useAxiosSecure();
 
     const myBookedTutorialsPromise = (email, tutorial_id) => {
-        console.log(tutorial_id)
+        
         return axiosSecure.get(`tutorialBooking?email=${email}${tutorial_id ? `&tutorial_id=${tutorial_id}` : ''}`)
             .then(res => res.data);
     }

@@ -13,7 +13,7 @@ const useMyAddedTutorials = () => {
             .then(res => res.data);
     }
     const myAddedTutorialPatch = (email, tutorial_id, data) => {
-        console.log(email, tutorial_id, data)
+
         return axiosSecure.patch(
             `tutorial`,
             data,

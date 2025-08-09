@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            axios.get(`http://localhost:3000/user?email=${user.email}`)
+            axios.get(`https://fluent-talk-server-pink.vercel.app/user?email=${user.email}`)
                 .then(response => setDBUser(response.data))
                 .catch(err => {
                     console.log(err)
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
+            // console.log(currentUser);
             setUser(currentUser);
             setIsLoading(false);
         });

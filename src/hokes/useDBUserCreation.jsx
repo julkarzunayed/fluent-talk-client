@@ -9,9 +9,9 @@ const useDBUserCreation = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const handleDBUserCreation = (userInfo) => {
-        axios.post(`http://localhost:3000/user`, userInfo)
+        axios.post(`https://fluent-talk-server-pink.vercel.app/user`, userInfo)
             .then(result => {
-                console.log(result)
+                
                 if (result.data.massage === 'user already exist and logged in successfully') {
                     Swal.fire({
                         position: "center",
@@ -20,7 +20,7 @@ const useDBUserCreation = () => {
                         showConfirmButton: true,
                         timer: 2000
                     });
-                    console.log('Data stored in db')
+                    
                     navigate(location?.state?.path || '/')
                     setDBUser(userInfo);
                 }
@@ -32,7 +32,7 @@ const useDBUserCreation = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    console.log('Data stored in db')
+                    
                     navigate(location?.state?.path || '/')
                     setDBUser(userInfo);
                 }

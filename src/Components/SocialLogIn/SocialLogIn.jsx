@@ -11,7 +11,6 @@ const SocialLogIn = () => {
     const role = location?.state?.role;
     const isRole = Boolean(role);
 
-    console.log('from Social login', role)
 
     const handleGoogleLogIn = () => {
         googleLogin()
@@ -26,7 +25,6 @@ const SocialLogIn = () => {
                     userInfo.role = 'student'
                 }
                 handleDBUserCreation(userInfo)
-                console.log(userInfo);
 
             })
             .catch(err => {

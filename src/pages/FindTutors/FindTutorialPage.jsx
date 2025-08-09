@@ -14,20 +14,20 @@ const FindTutorialPage = () => {
     const [search, setSearch] = useState();
     const [tutors, setTutors] = useState();
     useEffect(() => {
-        fetch(`http://localhost:3000/tutorial${search ? `?search=${search}` : ''}`)
+        fetch(`https://fluent-talk-server-pink.vercel.app/tutorial${search ? `?search=${search}` : ''}`)
             .then(res => res.json())
             .then(data => setTutors(data))
     }, [search])
 
     // const { isPending, error, isError, data } = useQuery({
     //     queryKey: ['tutorialData', search],
-    //     queryFn: () => fetch(`http://localhost:3000/tutorial`)
+    //     queryFn: () => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial`)
     //         .then(res => res.json())
     // })
     // const tutors = data;
     // if (isPending) return <Loader />
     // if (isError) return <Error />
-    // loader: ({ params }) => fetch(`http://localhost:3000/tutorial/byTutorId?tutorialId=${params.id}`),
+    // loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial/byTutorId?tutorialId=${params.id}`),
     useEffect(() => {
         setTimeout(() => {
             if (state) {
@@ -36,8 +36,7 @@ const FindTutorialPage = () => {
         }, 500);
     }, [])
 
-    console.log(location);
-    console.log('state==', state);
+    
     const isTutors = Boolean(tutors?.length);
     return (
         <div className={`pb-10`}>

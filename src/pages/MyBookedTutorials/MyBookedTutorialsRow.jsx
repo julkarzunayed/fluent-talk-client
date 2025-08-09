@@ -61,7 +61,7 @@ const MyBookedTutorialsRow = ({ tutorial, index }) => {
                 {tutorial?.tutorial_language}
             </td>
             <td>
-                {tutorial?.price || '$$'} $
+                {tutorial?.price || '0'} $
             </td>
             <th className='flex items-center flex-wrap justify-center'>
                 <Link

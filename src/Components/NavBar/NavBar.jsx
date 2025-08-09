@@ -18,7 +18,7 @@ const NavBar = () => {
         const currentTheme = document.documentElement.getAttribute("data-theme")
         const newTheme = currentTheme === 'light' ? 'dracula' : 'light'
         document.documentElement.setAttribute("data-theme", newTheme);
-        console.log(currentTheme)
+
     }
 
     const handleUserSighOut = () => {

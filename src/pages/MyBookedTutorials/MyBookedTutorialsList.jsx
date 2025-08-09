@@ -4,9 +4,9 @@ import { Link } from 'react-router';
 
 const MyBookedTutorialsList = ({ myBookedTutorialsPromise }) => {
     const tutorials = use(myBookedTutorialsPromise)
-    console.log(tutorials)
+    
     const isTutorials = Boolean(tutorials.length);
-    console.log(isTutorials)
+    
     return (
         <div className='max-w-7xl mx-auto'>
             {
@@ -28,7 +28,7 @@ const MyBookedTutorialsList = ({ myBookedTutorialsPromise }) => {
                                         <th>Tutor</th>
                                         <th>Language</th>
                                         <th>Price </th>
-                                        <th>Acton</th>
+                                        <th className='text-center'>Acton</th>
                                     </tr>
                                 </thead>
                                 <tbody>

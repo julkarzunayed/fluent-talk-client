@@ -12,7 +12,7 @@ const Settings = () => {
     const dbUserInWeb = {
         ...dbUser,
     }
-    // console.log(dbUserInWeb)
+    
     const handleSettings = e => {
         e.preventDefault()
         const form = e.target;
@@ -21,7 +21,7 @@ const Settings = () => {
 
         dbUserInWeb.name = name;
         dbUserInWeb.photo_URL = photo_URL;
-        // console.log(dbUserInWeb);
+        
         Swal.fire({
             title: "Are you sure?",
             text: "You want to change Your Information!",
@@ -60,7 +60,7 @@ const Settings = () => {
             }
         });
 
-        console.log(name, photo_URL)
+
     }
 
     const handleTutorApply = () => {

@@ -45,8 +45,7 @@ const TutorDetails = () => {
             tutorImage: tutor?.tutorImage,
             tutorial_language: tutor?.language
         }
-        console.log(tutorialBookingInfo);
-        axios.post(`http://localhost:3000/tutorialBooking`, tutorialBookingInfo)
+        axios.post(`https://fluent-talk-server-pink.vercel.app/tutorialBooking`, tutorialBookingInfo)
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {

@@ -7,16 +7,15 @@ import SocialLogIn from '../../Components/SocialLogIn/SocialLogIn';
 const LogIn = () => {
     const { logInUser } = useAuth();
     const location = useLocation();
-    console.log(location)
+    
     const navigate = useNavigate()
 
     const handleNavigateToSignUp = (role) => {
-        console.log(role)
-        // location.state.role = role;
+        
         navigate('/signUp', { state: {role: role, path: location.state } })
-        // console.log(location)
+    
     }
-    // console.log(import.meta.env.VITE_appId)
+
     const handleEmailPasswordLogin = e => {
         e.preventDefault();
 
@@ -26,7 +25,7 @@ const LogIn = () => {
 
         logInUser(email, password)
             .then(result => {
-                console.log(result.user);
+            
                 if (result.user) {
                     Swal.fire({
                         position: "center",
