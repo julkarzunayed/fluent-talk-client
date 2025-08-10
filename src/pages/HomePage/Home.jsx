@@ -5,16 +5,18 @@ import Stat from './Stat';
 import LanguageCategory from './LanguageCategory';
 import OurTeem from './OurTeem';
 import HowItWorks from './HowItWorks';
+import StudentSupport from './StudentSupport';
 
 const Home = () => {
     return (
         <div className='bg-base-200 pb-10'>
             <Banner></Banner>
-            <div className="m-1.5">
+            <div className="*:p-4">
                 <Stat></Stat>
                 <LanguageCategory></LanguageCategory>
                 <HowItWorks/>
                 <OurTeem></OurTeem>
+                <StudentSupport/>
             </div>
         </div>
     );

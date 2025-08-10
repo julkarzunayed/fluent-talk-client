@@ -5,6 +5,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
+/* primary: 092746 */
+/* secondary: aece61 */
+
 @plugin "daisyui/theme" {
   name: "light";
   /* default: true; */
@@ -94,8 +98,10 @@
 
 a.active{
     /* background-color: rgb(180, 180, 180); */
-    text-decoration: underline;
-    font-weight: bold;
+    background-color: oklch(80.4% 0.143 123);
+}
+a.active:hover {
+  color: white;
 }
 
 .font-sanchez {

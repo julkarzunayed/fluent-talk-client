@@ -1,12 +1,13 @@
 import React from 'react';
 import { FaRocketchat } from 'react-icons/fa';
+import FluentTalkLogo from '../FluentTalkLogo/FluentTalkLogo';
 
 const Footer = () => {
     return (
         <footer className='bg-primary text-gray-200'>
-            <div className="footer max-w-7xl mx-auto sm:footer-horizontal py-14">
+            <div className="footer max-w-[1500px] px-4 mx-auto sm:footer-horizontal py-14">
                 <aside>
-                    <FaRocketchat size={50} />
+                    <FluentTalkLogo/>
                     {/* <svg
                     width="50"
                     height="50"
@@ -45,7 +46,7 @@ const Footer = () => {
                     <a className="link link-hover">Cookie policy</a>
                 </nav>
             </div>
-            <div className="max-w-7xl mx-auto min-h-7 border-t border-dashed border-gray-300">
+            <div className="max-w-[1500px] mx-auto px-4 min-h-7 border-t border-dashed border-gray-300">
 
             </div>
         </footer>

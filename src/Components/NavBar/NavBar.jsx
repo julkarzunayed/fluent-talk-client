@@ -6,7 +6,15 @@ import { FaListUl } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { PiSignInBold, PiSignOutBold } from 'react-icons/pi';
 import ThemeController from '../ThemeController/ThemeController';
+import FluentTalkLogo from '../FluentTalkLogo/FluentTalkLogo';
 
+
+
+const {
+    navLinks
+} = {
+   navLinks: 'py-1 px-4 rounded-2xl ' 
+}
 
 const NavBar = () => {
     const { user, dbUser, signOutUser, setDBUser } = useAuth();
@@ -44,27 +52,28 @@ const NavBar = () => {
 
     return (
         <div className="min-h-14 ">
-            <div className=" fixed top-0 bg-white w-full z-50">
+            <div className=" fixed top-0 bg-primary w-full z-50 px-1 font-sanchez">
 
                 <div className="p-2 min-h-14 max-w-[1500px] mx-auto flex   items-center justify-between  w-full ">
-                    <Link to={`/`}>
-                        <h2 className="text-2xl font-bold">FluentTalk</h2>
-                    </Link>
+                    {/* ------------logo------------- */}
+                    <FluentTalkLogo />
                     {/* links in navBar */}
                     <div className="hidden md:block">
-                        <ul className='*:p-2 *:pb-1 *:hover:border-b-4 text-gray-800 *:border-b-base-100 *:hover:border-b-gray-400 flex'>
-                            <li><NavLink to={`/`}>Home</NavLink></li>
-                            <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
+
+                        {/* ------- Center links ------- */}
+                        <ul className='font-semibold text-white  *:hover:text-secondary flex'>
+                            <li><NavLink className={navLinks} to={`/`}>Home</NavLink></li>
+                            <li><NavLink className={navLinks} to={`/findTutors`}>Find Tutors</NavLink></li>
                             {
                                 user && <>
                                     {
                                         dbUser?.role === 'tutor' && <li>
-                                            <NavLink to={`/addTutorials`}>Add Tutorial</NavLink>
+                                            <NavLink className={navLinks} to={`/addTutorials`}>Add Tutorial</NavLink>
                                         </li>
                                     }
                                     {
                                         dbUser?.role === 'student' && <li>
-                                            <NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
+                                            <NavLink className={navLinks} to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
                                         </li>
                                     }
 
