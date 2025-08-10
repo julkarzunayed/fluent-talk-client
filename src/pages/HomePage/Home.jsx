@@ -4,14 +4,16 @@ import Loader from '../Loader/Loader';
 import Stat from './Stat';
 import LanguageCategory from './LanguageCategory';
 import OurTeem from './OurTeem';
+import HowItWorks from './HowItWorks';
 
 const Home = () => {
     return (
         <div className='bg-base-200 pb-10'>
             <Banner></Banner>
-            <div className="max-w-[1500px] mx-auto">
+            <div className="m-1.5">
                 <Stat></Stat>
                 <LanguageCategory></LanguageCategory>
+                <HowItWorks/>
                 <OurTeem></OurTeem>
             </div>
         </div>

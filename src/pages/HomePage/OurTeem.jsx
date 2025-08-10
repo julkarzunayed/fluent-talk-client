@@ -2,7 +2,7 @@ import React from 'react';
 
 const OurTeem = () => {
     return (
-        <div className='max-w-5xl mx-auto'>
+        <div className='max-w-[1500px] mx-auto'>
             <h1 className="text-4xl text-center font-bold mb-10">Meet our Teem</h1>
 
             <div className="*:max-w-3xs  grid grid-cols-1 *:mx-auto *:w-full sm:grid-cols-2 md:grid-cols-4 gap-4 lg:gap-8">
