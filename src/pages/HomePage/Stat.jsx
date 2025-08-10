@@ -19,40 +19,40 @@ const Stat = () => {
     }, []);
 
     return (
-        <div className="flex p-5">
-            <div className="stats shadow mx-auto">
+        <div className="flex p-5 relative min-h-20">
+            <div className="stats absolute max-w-7xl bg-primary -top-10 left-0 right-0 text-gray-300 shadow mx-auto">
                 <div className="stat">
-                    <div className="stat-figure text-orange-600">
-                        <LiaChalkboardTeacherSolid  size={40}/>
+                    <div className="stat-figure text-secondary">
+                        <LiaChalkboardTeacherSolid  size={70}/>
                     </div>
-                    <div className="stat-title">Tutors</div>
+                    <div className="stat-title  text-gray-300">Tutors</div>
                     <div className="stat-value">{tutorCount}+</div>
                     {/* <div className="stat-desc">Jan 1st - Feb 1st</div> */}
                 </div>
 
                 <div className="stat">
-                    <div className="stat-figure text-orange-600">
-                        <FaCommentMedical size={40}/>
+                    <div className="stat-figure text-secondary">
+                        <FaCommentMedical size={70}/>
                     </div>
-                    <div className="stat-title">Reviews</div>
+                    <div className="stat-title text-gray-300">Reviews</div>
                     <div className="stat-value">4,200</div>
                     {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
                 </div>
 
                 <div className="stat">
-                    <div className="stat-figure text-orange-600">
-                        <PiStudentDuotone  size={40}/>
+                    <div className="stat-figure text-secondary">
+                        <PiStudentDuotone  size={70}/>
                     </div>
-                    <div className="stat-title">Learners</div>
+                    <div className="stat-title text-gray-300">Learners</div>
                     <div className="stat-value">{studentCount}+</div>
                     {/* <div className="stat-desc">↗︎ 400 (22%)</div> */}
                 </div>
 
                 <div className="stat">
-                    <div className="stat-figure text-orange-600">
-                        <IoLanguageSharp size={40} />
+                    <div className="stat-figure text-secondary">
+                        <IoLanguageSharp size={70} />
                     </div>
-                    <div className="stat-title">Language </div>
+                    <div className="stat-title text-gray-300">Language </div>
                     <div className="stat-value">1,200</div>
                     {/* <div className="stat-desc">↘︎ 90 (14%)</div> */}
                 </div>

@@ -28,7 +28,7 @@ const Banner = () => {
         <div style={{
             backgroundImage: `linear-gradient(to bottom, oklch(20% 0.05 252 / 0.7), oklch(20% 0.05 252 / 0.9)), url(${banner01})`,
         }}
-            className='py-10 bg-orange-50 bg-cover bg- bg-fixed bg-[200%]'>
+            className='py-10 pb-16 bg-orange-50 bg-cover bg-center bg-fixed'>
             <div className="flex flex-col-reverse md:flex-row  max-w-[1500px] mx-auto">
                 <div className="flex-1 flex  items-center pl-5">
                     <div className="py-10">
