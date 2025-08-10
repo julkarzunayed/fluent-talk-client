@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LanguageCategoryCard from './LanguageCategoryCard';
+import HomeTitle from '../../Components/HomeTitle/HomeTitle';
 
 const LanguageCategory = () => {
     const [languages, setLanguages] = useState([]);
@@ -13,6 +14,13 @@ const LanguageCategory = () => {
     const filteredLanguages = languages?.filter(language => language.id < (showAll ? languages?.length : 10))
     return (
         <div className='max-w-[1500px] mx-auto'>
+            <HomeTitle
+                titleMini="Which language Your are looking for?"
+                title_1='Choose a '
+                title_2='Language'
+                title_1_color=''
+
+            />
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ">
                 {
                     filteredLanguages?.map(language => <LanguageCategoryCard

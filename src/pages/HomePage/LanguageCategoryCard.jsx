@@ -14,7 +14,7 @@ const LanguageCategoryCard = ({ language }) => {
     return (
         <div
             onClick={handleNavigate}
-            className='flex gap-3 border border-gray-400 rounded-sm p-3'>
+            className='flex gap-3 bg-white hover:shadow-sm rounded-2xl p-3'>
             <div className="w-13">
                 <img
                     alt="Flags"
