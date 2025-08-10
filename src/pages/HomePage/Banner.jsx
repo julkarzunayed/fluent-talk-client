@@ -12,7 +12,6 @@ const images = [
 ]
 
 const Banner = () => {
-    console.log(banner01)
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     

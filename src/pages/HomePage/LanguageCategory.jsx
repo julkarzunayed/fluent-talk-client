@@ -12,7 +12,7 @@ const LanguageCategory = () => {
     }, []);
     const filteredLanguages = languages?.filter(language => language.id < (showAll ? languages?.length : 10))
     return (
-        <div className='p-5 max-w-[1500px] mx-auto'>
+        <div className='max-w-[1500px] mx-auto'>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ">
                 {
                     filteredLanguages?.map(language => <LanguageCategoryCard
@@ -22,7 +22,7 @@ const LanguageCategory = () => {
             </div>
             <button
                 onClick={() => setShowAll(!showAll)}
-                className='my-5 ml-2 font-bold'>
+                className='mt-5 ml-2 font-bold'>
                 - <span className="underline ">
                     Show {showAll ? 'Less' : 'All'}
                 </span>
