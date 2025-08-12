@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
-import axios from 'axios';
+import useAxios from '../hokes/useAxios';
 
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+    const axiosPublic = useAxios();
     const [user, setUser] = useState(null);
     const [dbUser, setDBUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    
+
     const createUser = (email, password) => {
         setIsLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
@@ -27,11 +28,16 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (user) {
-            axios.get(`https://fluent-talk-server-pink.vercel.app/user?email=${user.email}`)
-                .then(response => setDBUser(response.data))
-                .catch(err => {
-                    console.log(err)
-                })
+            async function fetchDBuser() {
+                const res = await axiosPublic.get(`user?email=${user.email}`)
+                // .then(response => setDBUser(response.data))
+                // .catch(err => {
+                //     console.log(err)
+                // })
+                console.log(res)
+                setDBUser(res.data)
+            }
+            fetchDBuser()
         }
     }, [user])
 

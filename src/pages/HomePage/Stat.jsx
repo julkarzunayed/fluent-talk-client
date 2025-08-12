@@ -1,20 +1,21 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaCommentMedical } from 'react-icons/fa';
 import { IoLanguageSharp } from 'react-icons/io5';
 import { LiaChalkboardTeacherSolid } from 'react-icons/lia';
 import { PiStudentDuotone } from 'react-icons/pi';
+import useAxios from '../../hokes/useAxios';
 
 
 
 const Stat = () => {
+    const axiosPublic = useAxios();
     const [studentCount, setStudentCount ]= useState(0);
     const [tutorCount, setTutorCount ]= useState(0);
 
     useEffect(() => {
-        axios.get(`https://fluent-talk-server-pink.vercel.app/user/student`)
+        axiosPublic.get(`user/student`)
             .then(res => setStudentCount(res.data))
-        axios.get(`https://fluent-talk-server-pink.vercel.app/user/tutor`)
+        axiosPublic.get(`user/tutor`)
             .then(res => setTutorCount(res.data))
     }, []);
 

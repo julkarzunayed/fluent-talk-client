@@ -5,7 +5,7 @@ const Loader = () => {
     return (
         <div className='flex items-center justify-center p-10 w-full h-full'>
             <PacmanLoader
-                color="#46fff4"
+                color="#aece61"
                 loading
                 size={50}
                 speedMultiplier={1}

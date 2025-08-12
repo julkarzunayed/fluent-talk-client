@@ -5,13 +5,18 @@ import { Link } from 'react-router';
 const TutorCard = ({ tutor }) => {
 
     return (
-        <div className='bg-base-100 hover:shadow-xl hover:border-gray-500 rounded-sm p-2 '>
+        <div className='bg-base-100 hover: box-shadow-hover hover:border-gray-500 rounded-sm p-5 '>
             <div className="grid gap-2 grid-cols-1 sm:grid-cols-4">
-                <div className="flex">
-                    <figure className='  max-w-[150px] md:w-auto w-full'>
-                        <img
+                <div className="flex gap-5 sm:gap-1">
+                    <figure className='max-w-[150px] min-h-[150px] flex-1 w-full'>
+                        <div
+                            style={{ backgroundImage: `url(${tutor?.tutorImage || 'https://placehold.co/550x400/444444/ff7800.png?text=Avater'})` }}
+                            className="w-full h-full rounded-sm bg-center bg-cover">
+
+                        </div>
+                        {/* <img
                             className=''
-                            src={tutor?.tutorImage} alt="tutor image" />
+                            src={tutor?.tutorImage} alt="tutor image" /> */}
                     </figure>
                     <div className="sm:hidden">
                         <div className="flex gap-3">
@@ -21,9 +26,14 @@ const TutorCard = ({ tutor }) => {
                                 alt="Flags"
                                 src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
                         </div>
-                        <div className="flex justify-between">
+                        <div className="">
                             <p className="font-bold">{tutor?.price} $</p>
-                            <p className="">@</p>
+                            <p className=" flex items-center gap-3">
+                                <IoMdHeart size={17} color='red' />
+                                <span className='font-bold'>
+                                    {tutor?.review?.length || 0}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -49,7 +59,7 @@ const TutorCard = ({ tutor }) => {
                             <p className=" flex items-center gap-3">
                                 <IoMdHeart size={17} color='red' />
                                 <span className='font-bold'>
-                                    { tutor?.review?.length || 0}
+                                    {tutor?.review?.length || 0}
                                 </span>
                             </p>
                         </div>

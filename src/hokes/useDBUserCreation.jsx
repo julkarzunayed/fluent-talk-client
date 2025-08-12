@@ -3,13 +3,15 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import useAuth from './useAuth';
+import useAxios from './useAxios';
 
 const useDBUserCreation = () => {
+    const axiosPublic = useAxios();
     const { setDBUser, } = useAuth()
     const navigate = useNavigate();
     const location = useLocation()
     const handleDBUserCreation = (userInfo) => {
-        axios.post(`https://fluent-talk-server-pink.vercel.app/user`, userInfo)
+        axiosPublic.post(`user`, userInfo)
             .then(result => {
                 
                 if (result.data.massage === 'user already exist and logged in successfully') {

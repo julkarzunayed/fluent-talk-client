@@ -3,8 +3,10 @@ import useAuth from '../../hokes/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import useAxios from '../../hokes/useAxios';
 
 const AddTutorial = () => {
+    const axiosPublic = useAxios();
     const { dbUser } = useAuth();
     const [languages, setLanguages] = useState([]);
     const navigate = useNavigate();
@@ -45,7 +47,7 @@ const AddTutorial = () => {
             description
         }
         // console.log(tutorialInfo);
-        axios.post(`https://fluent-talk-server-pink.vercel.app/tutorial`, tutorialInfo)
+        axiosPublic.post(`tutorial`, tutorialInfo)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.insertedId) {

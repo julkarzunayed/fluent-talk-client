@@ -33,15 +33,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/findTutors',
-                // loader: () => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial`),
                 Component: FindTutorialPage,
                 hydrateFallbackElement: <Loader></Loader>
             },
             {
                 path: '/tutorDetails/:id',
-                element: <PrivetRout>
-                    <TutorDetails />
-                </PrivetRout>,
+                element: <TutorDetails />,
                 loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorial_id=${params.id}`),
                 hydrateFallbackElement: <Loader />
             },
