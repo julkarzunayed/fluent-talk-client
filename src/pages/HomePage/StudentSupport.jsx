@@ -51,7 +51,7 @@ const StudentSupport = () => {
             <div className="max-w-[1500px] mx-auto ">
                 <HomeTitle
                     titleMini="Having issue! Need some online support?"
-                    title_1='Tale Online '
+                    title_1='Take Online '
                     title_2='Support'
                     title_1_color='text-white'
 

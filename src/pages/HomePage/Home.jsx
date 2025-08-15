@@ -9,7 +9,7 @@ import StudentSupport from './StudentSupport';
 
 const Home = () => {
     return (
-        <div className='bg-base-200 pb-10'>
+        <div className='bg-base-200 pt-10'>
             <Banner></Banner>
             <div className="*:p-4">
                 <Stat></Stat>
