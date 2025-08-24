@@ -12,7 +12,7 @@ const Settings = () => {
     const dbUserInWeb = {
         ...dbUser,
     }
-    
+
     const handleSettings = e => {
         e.preventDefault()
         const form = e.target;
@@ -21,7 +21,7 @@ const Settings = () => {
 
         dbUserInWeb.name = name;
         dbUserInWeb.photo_URL = photo_URL;
-        
+
         Swal.fire({
             title: "Are you sure?",
             text: "You want to change Your Information!",
@@ -111,56 +111,58 @@ const Settings = () => {
         });
     }
     return (
-        <div className='max-w-5xl bg-base-200 pb-8 w-full mx-auto mb-5'>
-            <Profile></Profile>
-            <h1 className="text-center font-bold text-3xl mb-5">Edit Your Profile Info</h1>
-            <div className="max-w-sm w-full mx-auto border border-orange-100 p-3 rounded-lg shadow-xl">
-                <form
-                    onSubmit={handleSettings}
-                    className='flex flex-col *:w-full'>
-                    {/* Email */}
-                    <label className='label'>Email</label>
-                    <input
-                        type="Email"
-                        name='email'
-                        className="input"
-                        value={dbUser?.email}
-                        placeholder="Email" />
+        <div className="bg-base-200">
+            <div className='max-w-[1500px]  w-full mx-auto pb-14'>
+                <Profile></Profile>
+                <h1 className="text-center font-bold text-3xl">Edit Your Profile Info</h1>
+                <div className="max-w-sm w-full mx-auto border border-orange-100 p-3 rounded-lg shadow-xl">
+                    <form
+                        onSubmit={handleSettings}
+                        className='flex flex-col *:w-full'>
+                        {/* Email */}
+                        <label className='label'>Email</label>
+                        <input
+                            type="Email"
+                            name='email'
+                            className="input"
+                            value={dbUser?.email}
+                            placeholder="Email" />
 
-                    {/* Name */}
-                    <label className='label'>Name</label>
-                    <input
-                        type="text"
-                        name='name'
-                        className="input"
-                        defaultValue={dbUser?.name}
-                        placeholder="Name" />
+                        {/* Name */}
+                        <label className='label'>Name</label>
+                        <input
+                            type="text"
+                            name='name'
+                            className="input"
+                            defaultValue={dbUser?.name}
+                            placeholder="Name" />
 
-                    {/* photo Url */}
-                    <label className='label mt-2'>Photo URL</label>
-                    <input
-                        type="url"
-                        name='photo_URL'
-                        className="input"
-                        defaultValue={dbUser?.photo_URL}
-                        placeholder="Photo URL" />
+                        {/* photo Url */}
+                        <label className='label mt-2'>Photo URL</label>
+                        <input
+                            type="url"
+                            name='photo_URL'
+                            className="input"
+                            defaultValue={dbUser?.photo_URL}
+                            placeholder="Photo URL" />
 
-                    <input className='btn w-full mt-2 border-orange-600' type="submit" value='Update Info' />
-                </form>
-            </div>
-            {
-                dbUser?.role !== 'tutor' &&
-
-                <div className="max-w-sm w-full mx-auto border border-orange-200 p-3 rounded-lg shadow-xl mt-8">
-                    <h2 className="text-center font-bold text-2xl">Become A Tutor</h2>
-                    <button
-                        onClick={handleTutorApply}
-                        className="btn w-full mt-2 border-orange-600">
-                        Apply for bing a tutor
-                    </button>
+                        <input className='btn w-full mt-2 border-orange-600' type="submit" value='Update Info' />
+                    </form>
                 </div>
-            }
+                {
+                    dbUser?.role !== 'tutor' &&
 
+                    <div className="max-w-sm w-full mx-auto border border-orange-200 p-3 rounded-lg shadow-xl mt-8">
+                        <h2 className="text-center font-bold text-2xl">Become A Tutor</h2>
+                        <button
+                            onClick={handleTutorApply}
+                            className="btn w-full mt-2 border-orange-600">
+                            Apply for bing a tutor
+                        </button>
+                    </div>
+                }
+
+            </div>
         </div>
     );
 };

@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
                 // .catch(err => {
                 //     console.log(err)
                 // })
-                console.log(res)
+                // console.log(res)
                 setDBUser(res.data)
             }
             fetchDBuser()

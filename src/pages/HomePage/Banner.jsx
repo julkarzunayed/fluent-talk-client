@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from "motion/react";
 import { Typewriter } from 'react-simple-typewriter'
-import banner01 from '../../assets/student-learning-online-01.jpg';
-import banner02 from '../../assets/support_teme.jpg';
-import banner03 from '../../assets/child_onlineclass.jpg';
+import banner01 from '../../assets/student-learning-online-01.webp';
+// import banner02 from '../../assets/support_teme.webp';
+// import banner03 from '../../assets/child_onlineclass.webp';
 
-const images = [
-    banner01,
-    banner02,
-    banner03,
-]
+// const images = [
+//     banner01,
+//     banner02,
+//     banner03,
+// ]
 
 const Banner = () => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    // const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    
-    useEffect(() => {
 
-        const intervalId = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
+    // useEffect(() => {
 
-        return () => clearInterval(intervalId);
-    }, [images.length]);
+    //     const intervalId = setInterval(() => {
+    //         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    //     }, 5000);
+
+    //     return () => clearInterval(intervalId);
+    // }, [images.length]);
     return (
         <div style={{
             backgroundImage: `linear-gradient(to bottom, oklch(20% 0.05 252 / 0.7), oklch(20% 0.05 252 / 0.9)), url(${banner01})`,
         }}
-            className='py-10 pb-16 bg-orange-50 bg-cover bg-center bg-fixed'>
+            className='pt-28 pb-16 bg-orange-50 bg-cover bg-center bg-fixed'>
             <div className="flex flex-col-reverse md:flex-row  max-w-[1500px] mx-auto">
                 <div className="flex-1 flex  items-center pl-5">
                     <div className="py-10">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useParams } from 'react-router';
 import { IoMdHeart } from "react-icons/io";
 import { FaGraduationCap, FaRegHeart } from 'react-icons/fa';
 import { LuHeartOff } from "react-icons/lu";
@@ -9,6 +9,8 @@ import useMyAddedTutorials from '../../apis/useMyAddedTutorials';
 import { IoHeartDislikeSharp } from 'react-icons/io5';
 import useMyBookedTutorials from '../../apis/useMyBookedTutorials';
 import useAxios from '../../hokes/useAxios';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../Loader/Loader';
 
 const TutorDetails = () => {
     const axiosPublic = useAxios();
@@ -16,7 +18,9 @@ const TutorDetails = () => {
     const { myBookedTutorialsPromise } = useMyBookedTutorials();
     const [isBooked, setIsBooked] = useState(false);
     const { user } = useAuth();
-    const [tutor] = useLoaderData();
+    const { id } = useParams();
+    console.log(id)
+    // const [tutor] = useLoaderData();
 
     // To Check if user is booked the Tutorial or not 
     useEffect(() => {
@@ -30,11 +34,20 @@ const TutorDetails = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, []);
 
+    const { data: [tutor] = [], isLoading, isPending } = useQuery({
+        queryKey: ['tutorial_details', id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`tutorial?tutorial_id=${id}`)
+            return res.data
+        },
+        enabled: !!id
+    })
 
+    console.log(tutor)
 
-    const isReviewed = tutor?.review?.includes(user.email);
+    const isReviewed = tutor?.review?.includes(user?.email);
 
 
     const hanDleBookTutorial = () => {
@@ -93,115 +106,120 @@ const TutorDetails = () => {
             })
     }
     return (
-        <div className="bg-base-200">
-            <div className='max-w-[1500px] relative mx-auto bg-base-100'>
-                <div className="relative border-b border-secondary">
-                    <div className="absolute w-full">
-                        <div className="bg-gray-300 h-36 rounded-b-3xl"></div>
-                        <div className="h-36"></div>
-                    </div>
-                    <figure
-                        style={{ backgroundImage: `url(${tutor?.tutorImage})` }}
-                        className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
-
-                    </figure>
-                    <div className="py-5">
-                        <div className="h-[250px] "></div>
-                    </div>
-
-                </div>
-
-                <div className="max-w-sm *:mb-5 mx-auto mt-5 pb-5">
-                    <div className="flex justify-between ">
-                        <div className="">
-                            <div className="flex gap-3">
-                                <h3 className="text-2xl font-bold">
-                                    <span>Tutor: </span>
-                                    {tutor?.tutorName}
-                                </h3>
-                                <img
-                                    className='w-7'
-                                    alt="Flags"
-                                    src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
+        <div className="bg-base-200 pt-11">
+            {
+                (!isLoading && !isPending) ?
+                    <div className='max-w-[1500px] min-h-[70vh] relative mx-auto bg-base-100'>
+                        <div className="relative border-b border-secondary">
+                            <div className="absolute w-full">
+                                <div className="bg-gray-300 h-40 rounded-b-3xl"></div>
+                                <div className="h-36"></div>
                             </div>
-                            <p className="">Tutor Email: {tutor?.tutorEmail}</p>
-                            <p className="">Tutor ID: {tutor?.tutorId}</p>
-                        </div>
-                        <div className="">
-                            <p className="flex items-center gap-1">
-                                <IoMdHeart size={20} color='red' />
-                                <span className='font-bold text-xl'>
-                                    {tutor?.review?.length || 0}
-                                </span>
-                            </p>
-                            <p className="font-bold text-2xl">{tutor?.price} $</p>
-                        </div>
-                    </div>
+                            <figure
+                                style={{ backgroundImage: `url(${tutor?.tutorImage})` }}
+                                className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
 
-                    <div className="">
-                        <div className="">
-                            <div className="md:col-span-2">
-                                <p className="text-lg font-semibold flex items-center gap-2">
-                                    <FaGraduationCap size={22} />
-                                    {tutor?.language}</p>
-                                <p className="">
-                                    <span className='font-bold underline'>Description: </span>
-                                    {tutor?.description}
-                                </p>
+                            </figure>
+                            <div className="py-5">
+                                <div className="h-[250px] "></div>
                             </div>
+
                         </div>
-                    </div>
-                    {
-                        tutor?.tutorEmail === user?.email ?
-                            <div className="flex items-center gap-4">
-                                <Link
-                                    to={`/editTutorial/${tutor?._id}`}
-                                    className='btn flex-1 border border-orange-500'>
-                                    Edit Tutorial
-                                </Link>
+
+                        <div className="max-w-sm *:mb-5 mx-auto mt-5 pb-5">
+                            <div className="flex justify-between ">
+                                <div className="">
+                                    <div className="flex gap-3">
+                                        <h3 className="text-2xl font-bold">
+                                            <span>Tutor: </span>
+                                            {tutor?.tutorName}
+                                        </h3>
+                                        <img
+                                            className='w-7'
+                                            alt="Flags"
+                                            src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
+                                    </div>
+                                    <p className="">Tutor Email: {tutor?.tutorEmail}</p>
+                                    <p className="">Tutor ID: {tutor?.tutorId}</p>
+                                </div>
+                                <div className="">
+                                    <p className="flex items-center gap-1">
+                                        <IoMdHeart size={20} color='red' />
+                                        <span className='font-bold text-xl'>
+                                            {tutor?.review?.length || 0}
+                                        </span>
+                                    </p>
+                                    <p className="font-bold text-2xl">{tutor?.price} $</p>
+                                </div>
                             </div>
-                            :
-                            <div className="flex items-center gap-4">
-                                {
-                                    !isBooked ?
-                                        <button
-                                            onClick={hanDleBookTutorial}
+
+                            <div className="">
+                                <div className="">
+                                    <div className="md:col-span-2">
+                                        <p className="text-lg font-semibold flex items-center gap-2">
+                                            <FaGraduationCap size={22} />
+                                            {tutor?.language}</p>
+                                        <p className="">
+                                            <span className='font-bold underline'>Description: </span>
+                                            {tutor?.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {
+                                tutor?.tutorEmail === user?.email ?
+                                    <div className="flex items-center gap-4">
+                                        <Link
+                                            to={`/editTutorial/${tutor?._id}`}
                                             className='btn flex-1 border border-orange-500'>
-                                            Book Tutor
-                                        </button>
-                                        :
-                                        <div className=' w-full'>
-                                            <p className="my-1 text-blue-400">Tutorial is already Booked</p>
-                                            <Link
-                                                to={'/myBookedTutorials'}
-                                                className='btn flex-1 border border-orange-500 w-full'>
-                                                Check Your Booking
-                                            </Link>
-                                        </div>
+                                            Edit Tutorial
+                                        </Link>
+                                    </div>
+                                    :
+                                    <div className="flex items-center gap-4">
+                                        {
+                                            !isBooked ?
+                                                <button
+                                                    onClick={hanDleBookTutorial}
+                                                    className='btn flex-1 border border-orange-500'>
+                                                    Book Tutor
+                                                </button>
+                                                :
+                                                <div className=' w-full'>
+                                                    <p className="my-1 text-blue-400">Tutorial is already Booked</p>
+                                                    <Link
+                                                        to={'/myBookedTutorials'}
+                                                        className='btn flex-1 border border-orange-500 w-full'>
+                                                        Check Your Booking
+                                                    </Link>
+                                                </div>
 
 
-                                }
-                                {
-                                    !isReviewed ?
-                                        <button
-                                            onClick={handleReviewUpdate}
-                                            className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600`}>
-                                            <FaRegHeart size={25} />
-                                        </button>
-                                        :
-                                        <button
-                                            onClick={handleReviewUpdate}
-                                            className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-gray-600`}>
-                                            <IoHeartDislikeSharp size={30} />
-                                        </button>
-                                }
+                                        }
+                                        {
+                                            !isReviewed ?
+                                                <button
+                                                    onClick={handleReviewUpdate}
+                                                    className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-orange-600`}>
+                                                    <FaRegHeart size={25} />
+                                                </button>
+                                                :
+                                                <button
+                                                    onClick={handleReviewUpdate}
+                                                    className={`shadow-2xl text-shadow-2xs p-2 rounded-lg hover:bg-gray-200 text-gray-600`}>
+                                                    <IoHeartDislikeSharp size={30} />
+                                                </button>
+                                        }
 
-                            </div>
-                    }
+                                    </div>
+                            }
 
-                </div>
+                        </div>
 
-            </div>
+                    </div>
+                    :
+                    <Loader></Loader>
+            }
         </div>
     );
 };

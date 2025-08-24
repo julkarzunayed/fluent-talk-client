@@ -17,7 +17,8 @@
   --color-base-100: oklch(100% 0 0);
   --color-base-200: oklch(96% 0 252);
   --color-base-300: oklch(92% 0.001 252);
-  --color-base-content: oklch(27.807% 0.029 256.847);
+  --color-base-content: oklch(27.807% 0.029 252);
+
   --color-primary: oklch(30% 0.085 253);
   --color-primary-content: oklch(89.824% 0.057 266.839);
   --color-secondary: oklch(80.4% 0.143 123);
@@ -64,7 +65,8 @@
   --color-base-200: oklch(22.155% 0 252);
   --color-base-300: oklch(15.176% 0.001 252);
 
-  --color-base-content: oklch(85% 0.02 252);
+  --color-base-content: oklch(90% 0.001 252);
+
   --color-primary: oklch(30% 0.085 253);
   --color-primary-content: oklch(98% 0.01 240);
   --color-secondary: oklch(80.4% 0.143 123);
@@ -104,6 +106,7 @@
 a.active {
   /* background-color: rgb(180, 180, 180); */
   background-color: oklch(80.4% 0.143 123);
+  color: white;
 }
 
 a.active:hover {

@@ -14,9 +14,10 @@ const FindTutorialPage = () => {
     const location = useLocation();
     const state = location?.state
     const [search, setSearch] = useState();
+    const [tutorName, setTutorName] = useState();
     // const [tutors, setTutors] = useState();
     // useEffect(() => {
-    //     fetch(`https://fluent-talk-server-pink.vercel.app/tutorial${search ? `?search=${search}` : ''}`)
+    //     fetch(`---------------------/tutorial${search ? `?search=${search}` : ''}`)
     //         .then(res => res.json())
     //         .then(data => setTutors(data))
     // }, [search])
@@ -30,29 +31,30 @@ const FindTutorialPage = () => {
     }, [])
 
     const { isPending, isLoading, data: tutors = [] } = useQuery({
-        queryKey: ['tutorialData', search],
+        queryKey: ['tutorialData', search, tutorName],
         queryFn: async () => {
-            const res = await axiosPublic.get(`tutorial${search ? `?search=${search}` : ''}`)
+            const res = await axiosPublic.get(`tutorial?${search ? `search=${search}` : ''}${tutorName? `&tutorName=${tutorName}` : ''}`)
             console.log(res)
             return res.data
         },
         // enabled: ,
     })
+    // console.log(tutors)
     // const tutors = data;
-    // loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial/byTutorId?tutorialId=${params.id}`),
+    // loader: ({ params }) => fetch(`--------------------tutorial/byTutorId?tutorialId=${params.id}`),
 
 
 
     const isTutors = Boolean(tutors?.length);
     return (
-        <div className={`py-10 bg-base-200 min-h-screen`}>
+        <div className={`py-16 bg-base-200 min-h-screen`}>
             <div className="grid md:grid-cols-6 max-w-[1500px] mx-auto bg-primary -top-0">
                 <div className="bg-[#092746] col-span-6 md:col-span-1">
                     <h1 className="text-center flex sm:flex-col gap-3 justify-center font-semibold font-sanchez my-5">
                         <span className="text-3xl md:text-4xl text-white">
                             Find Your
                         </span>
-                        
+
                         <span className=" text-3xl sm:text-4xl md:text-5xl text-secondary">
                             Tutor
                         </span>
@@ -62,9 +64,9 @@ const FindTutorialPage = () => {
                     <input
                         type="text"
                         placeholder="Tutor Name"
-                        defaultValue={location.state}
+                        // defaultValue={location.state}
                         // onClickCapture={(e) => setSearch(e.target.value)}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => setTutorName(e.target.value)}
                         className=" outline-0 p-4 max-w-2xs w-full  bg-[#224161]  text-white" />
                     <input
                         type="text"

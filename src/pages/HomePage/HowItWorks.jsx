@@ -1,8 +1,8 @@
 import React from 'react';
 
-import image01 from '../../assets/students-with-monitor.jpg';
-import image02 from '../../assets/making_payments.jpg';
-import image03 from '../../assets/child_onlineclass.jpg';
+import image01 from '../../assets/students-with-monitor.webp';
+import image02 from '../../assets/making_payments.webp';
+import image03 from '../../assets/child_onlineclass.webp';
 import HomeTitle from '../../Components/HomeTitle/HomeTitle';
 
 const HowItWorks = () => {

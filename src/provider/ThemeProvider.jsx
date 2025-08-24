@@ -25,7 +25,7 @@ const ThemeProvider = ({ children }) => {
         // localStorage.setItem('theme', theme)
         // console.log('inside function:',exTheme)
     }
-    console.log(theme)
+    // console.log(theme)
 
     const themeInfo = {
         theme,

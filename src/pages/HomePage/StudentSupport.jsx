@@ -3,8 +3,8 @@ import React from 'react';
 import HomeTitle from '../../Components/HomeTitle/HomeTitle';
 
 
-import background from "../../assets/support_teme.jpg"
-import supportGirl from "../../assets/headphone_wearing_student.png"
+import background from "../../assets/support_teme.webp"
+import supportGirl from "../../assets/headphone_wearing_student.webp"
 import Swal from 'sweetalert2';
 
 const StudentSupport = () => {
@@ -87,8 +87,8 @@ const StudentSupport = () => {
                                             name='name'
                                             required
                                             placeholder="Mr Example"
-                                            minlength="3"
-                                            maxlength="30"
+                                            minLength="3"
+                                            maxLength="30"
                                             title="Only letters, numbers or dash"
                                         />
                                     </label>

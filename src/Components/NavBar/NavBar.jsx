@@ -13,7 +13,7 @@ import FluentTalkLogo from '../FluentTalkLogo/FluentTalkLogo';
 const {
     navLinks
 } = {
-   navLinks: 'py-1 px-4 rounded-2xl ' 
+    navLinks: 'py-1 px-4 rounded-2xl '
 }
 
 const NavBar = () => {
@@ -51,53 +51,56 @@ const NavBar = () => {
 
 
     return (
-        <div className="min-h-14 ">
+        <div className="min-h-5 ">
             <div className=" fixed top-0 bg-primary w-full z-50 px-1 font-sanchez">
 
+                {/* Navbar */}
                 <div className="p-2 min-h-14 max-w-[1500px] mx-auto flex   items-center justify-between  w-full ">
                     {/* ------------logo------------- */}
                     <FluentTalkLogo />
+
                     {/* links in navBar */}
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
 
                         {/* ------- Center links ------- */}
                         <ul className='font-semibold text-white  *:hover:text-secondary flex'>
                             <li><NavLink className={navLinks} to={`/`}>Home</NavLink></li>
                             <li><NavLink className={navLinks} to={`/findTutors`}>Find Tutors</NavLink></li>
                             {
-                                user && <>
-                                    {
-                                        dbUser?.role === 'tutor' && <li>
-                                            <NavLink className={navLinks} to={`/addTutorials`}>Add Tutorial</NavLink>
-                                        </li>
-                                    }
-                                    {
-                                        dbUser?.role === 'student' && <li>
-                                            <NavLink className={navLinks} to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
-                                        </li>
-                                    }
+                                user &&
+                                <li>
+                                    <NavLink className={navLinks} to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
+                                </li>
 
-                                </>
                             }
+                            <li><NavLink className={navLinks} to={`/dashboard`}>Dashboard</NavLink></li>
+                            <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li>
                         </ul>
                     </div>
 
 
+                    {/* <NavLink to={`/addTutorials`}>Add Tutorial</NavLink>
+                    <NavLink className={navLinks} to={`/addTutorials`}>Add Tutorial</NavLink>
+                    <NavLink to={`/myAddedTutorials`}>My Added Tutorial</NavLink>
+                    <NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
+                    <NavLink to={`/messages`}>Messages</NavLink>
+                    <NavLink to={`/profile`}>Profile</NavLink> */}
 
                     {/* --------------full screen nav Popup Closer------------ */}
 
                     <div onClick={() => setShowLinks(false)} className={`${showLinks ? '' : 'hidden'} fixed left-0 bg-black opacity-15 w-screen h-[200vh] z-30`}>
 
                     </div>
+
                     {/* -------------navigation Popup Box------------- */}
 
                     <div className="">
-                        <Tooltip className='z-50' anchorSelect=".my-anchor-element" place="bottom">
+                        <Tooltip className='z-50' anchorSelect="my-anchor-element" place="bottom">
                             {dbUser?.name}
                         </Tooltip>
                         {/* Navigation popup box */}
                         {
-                            <div className={`transition text-black duration-100  ${showLinks ? 'scale-100' : 'scale-0'} absolute right-5 top-15 bg-white  rounded-sm shadow-2xl z-40`}>
+                            <div className={`transition  duration-100  ${showLinks ? 'scale-100' : 'scale-0'} absolute right-5 top-15 bg-base-100 text-base-content  rounded-sm shadow-2xl z-40 font-semibold`}>
                                 {
                                     user ?
                                         <div className=" flex sm:hidden items-center gap-1 pt-3 p-2">
@@ -122,35 +125,27 @@ const NavBar = () => {
                                 }
 
                                 {/* All Navigation Links */}
-                                <ul className='*:p-2  *:px-5 *:w-full *:hover:bg-gray-100'>
-                                    <li><NavLink to={`/`}>Home</NavLink></li>
-                                    <li><NavLink to={`/findTutors`}>Find Tutors</NavLink></li>
+                                <ul className='*:p-2  *:px-5 *:w-full *:hover:bg-gray-200/25'>
+                                    <li><NavLink className={navLinks} to={`/`}>Home</NavLink></li>
+                                    <li><NavLink className={navLinks} to={`/findTutors`}>Find Tutors</NavLink></li>
                                     {
-                                        dbUser?.role === 'tutor' && <>
-                                            <li>
-                                                <NavLink to={`/addTutorials`}>Add Tutorial</NavLink>
-                                            </li>
-                                            <li>
-                                                <NavLink to={`/myAddedTutorials`}>My Added Tutorial</NavLink>
-                                            </li>
-                                        </>
-                                    }
-                                    {
-                                        user && <li>
-                                            <NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
+                                        // user && 
+                                        <li>
+                                            <NavLink className={navLinks} to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
                                         </li>
                                     }
-
-                                    <li><NavLink to={`/messages`}>Messages</NavLink></li>
-                                    <li><NavLink to={`/profile`}>Profile</NavLink></li>
-                                    <li><NavLink to={`/help`}>Help</NavLink></li>
+                                    <li><NavLink className={navLinks} to={`/dashboard`}>Dashboard</NavLink></li>
+                                    <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li>
                                     {
                                         user &&
-                                        <button
-                                            className='flex items-center gap-2 border-t border-gray-400'
-                                            onClick={handleUserSighOut}>Sign Out <PiSignOutBold />
-                                        </button>
+                                        <li>
+                                            <hr />
+                                            <button
+                                                className='ml-4 flex items-center gap-2 '
+                                                onClick={handleUserSighOut}>Sign Out <PiSignOutBold />
+                                            </button>
 
+                                        </li>
                                     }
 
                                 </ul>
@@ -179,9 +174,9 @@ const NavBar = () => {
                             }
                             {/* Navigation buttons */}
                             <button
-                                className=''
+                                className='lg:hidden'
                                 onClick={() => setShowLinks(!showLinks)}>
-                                <FaListUl size={28} />
+                                <FaListUl className='text-gray-200' size={28} />
                             </button>
                         </div>
                     </div>

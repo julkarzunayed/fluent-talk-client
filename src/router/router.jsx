@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router';
-import RootLayout from '../RootLayout/RootLayout';
+import RootLayout from '../layout/RootLayout';
 import Home from '../pages/HomePage/Home';
 import Error from '../pages/Error/Error';
 import SignUp from '../pages/SignUp/SignUp';
@@ -15,6 +15,7 @@ import Settings from '../pages/Settings/Settings';
 import ProfilePage from '../pages/Profile/ProfilePage';
 import EditTutorial from '../pages/EditTutorial/EditTutorial';
 import FindTutorialPage from '../pages/FindTutors/FindTutorialPage';
+import DashboardLayout from '../layout/DashboardLayout/DashboardLayout';
 
 const router = createBrowserRouter([
     {
@@ -39,8 +40,8 @@ const router = createBrowserRouter([
             {
                 path: '/tutorDetails/:id',
                 element: <TutorDetails />,
-                loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorial_id=${params.id}`),
-                hydrateFallbackElement: <Loader />
+                // loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorial_id=${params.id}`),
+                // hydrateFallbackElement: <Loader />
             },
             {
                 path: '/editTutorial/:id',
@@ -89,6 +90,13 @@ const router = createBrowserRouter([
                 path: 'signUp',
                 Component: SignUp,
             }
+        ]
+    },
+    {
+        path: 'dashboard',
+        Component: DashboardLayout,
+        children:[
+            
         ]
     },
     {

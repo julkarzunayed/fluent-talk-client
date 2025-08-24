@@ -6,7 +6,7 @@ const ThemeController = () => {
     return (
         <label onClick={themeChanger} className="swap swap-rotate text-gray-100">
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" className="theme-controller" value="synthwave" />
+            <input type="checkbox" className="theme-controller " value="synthwave" />
 
             {/* sun icon */}
             <svg
