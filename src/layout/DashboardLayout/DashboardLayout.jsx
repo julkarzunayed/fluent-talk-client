@@ -1,10 +1,10 @@
 import React from 'react';
 import FluentTalkLogo from '../../Components/FluentTalkLogo/FluentTalkLogo';
-import { NavLink } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 
 const DashboardLayout = () => {
     return (
-        <div className="drawer lg:drawer-open">
+        <div className="drawer lg:drawer-open bg-base-200">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content ">
                 {/* Navbar */}
@@ -33,21 +33,20 @@ const DashboardLayout = () => {
                     </div>
                 </div>
                 {/* Page content here */}
-                <div className="border">
-                    Content
+                <div className="">
+                    <Outlet />
                 </div>
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 text-base-content min-h-full w-72 p-4">
+                <ul className="menu bg-base-300 text-base-content min-h-full w-72 p-4">
                     {/* Sidebar content here */}
                     <li><FluentTalkLogo color={'text-base-content'} /></li>
-                    <li><NavLink to={`/addTutorials`}>Add Tutorial</NavLink></li>
-                    <li><NavLink className={``} to={`/addTutorials`}>Add Tutorial</NavLink></li>
-                    <li><NavLink to={`/myAddedTutorials`}>My Added Tutorial</NavLink></li>
-                    <li><NavLink to={`/myBookedTutorials`}>My Booked Tutorials</NavLink></li>
-                    <li><NavLink to={`/messages`}>Messages</NavLink></li>
-                    <li><NavLink to={`/profile`}>Profile</NavLink></li>
+                    <li><NavLink to={`/dashboard/addTutorials`}>Add Tutorial</NavLink></li>
+                    <li><NavLink to={`/dashboard/myAddedTutorials`}>My Added Tutorial</NavLink></li>
+                    <li><NavLink to={`/dashboard/myBookedTutorials`}>My Booked Tutorials</NavLink></li>
+                    {/* <li><NavLink to={`/messages`}>Messages</NavLink></li> */}
+                    <li><NavLink to={`/dashboard/profile`}>Profile</NavLink></li>
                 </ul>
             </div>
         </div>

@@ -27,12 +27,6 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/addTutorials',
-                element: <PrivetRout>
-                    <AddTutorial />
-                </PrivetRout>
-            },
-            {
                 path: '/findTutors',
                 Component: FindTutorialPage,
                 hydrateFallbackElement: <Loader></Loader>
@@ -44,39 +38,7 @@ const router = createBrowserRouter([
                 // hydrateFallbackElement: <Loader />
             },
             {
-                path: '/editTutorial/:id',
-                element: <PrivetRout>
-                    <EditTutorial />
-                </PrivetRout>,
-                loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorialId=${params.id}`),
-                hydrateFallbackElement: <Loader />
-            },
-            {
-                path: '/myAddedTutorials',
-                element: <PrivetRout>
-                    <MyAddedTutorials />
-                </PrivetRout>
-            },
-            {
-                path: '/myBookedTutorials',
-                element: <PrivetRout>
-                    <MyBookedTutorials />
-                </PrivetRout>
-            },
-            {
                 path: '/messages',
-            },
-            {
-                path: '/profile',
-                element: <PrivetRout>
-                    <ProfilePage />
-                </PrivetRout>
-            },
-            {
-                path: '/settings',
-                element: <PrivetRout>
-                    <Settings />
-                </PrivetRout>
             },
             {
                 path: '/help',
@@ -95,8 +57,39 @@ const router = createBrowserRouter([
     {
         path: 'dashboard',
         Component: DashboardLayout,
-        children:[
-            
+        children: [
+            {
+                path: 'myAddedTutorials',
+                element: <MyAddedTutorials />
+            },
+            {
+                path: 'profile',
+                element: <ProfilePage />
+            },
+            {
+                path: 'settings',
+                element: <PrivetRout>
+                    <Settings />
+                </PrivetRout>
+            },
+            {
+                path: 'addTutorials',
+                element: <PrivetRout>
+                    <AddTutorial />
+                </PrivetRout>
+            },
+            {
+                path: 'myBookedTutorials',
+                element: <MyBookedTutorials />
+            },
+            {
+                path: 'editTutorial/:id',
+                element: <PrivetRout>
+                    <EditTutorial />
+                </PrivetRout>,
+                loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorialId=${params.id}`),
+                hydrateFallbackElement: <Loader />
+            },
         ]
     },
     {

@@ -9,6 +9,7 @@ const AddTutorial = () => {
     const axiosPublic = useAxios();
     const { dbUser } = useAuth();
     const [languages, setLanguages] = useState([]);
+    const [objectives, setObjectives] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -44,7 +45,8 @@ const AddTutorial = () => {
             language,
             language_alpha2Code: language_alpha2Code?.alpha2Code,
             price,
-            description
+            description,
+            objectives,
         }
         // console.log(tutorialInfo);
         axiosPublic.post(`tutorial`, tutorialInfo)
@@ -62,9 +64,22 @@ const AddTutorial = () => {
                 }
             }).catch(err => console.log(err))
 
+    };
+
+    const handleObjectives = e => {
+        const text = e.target.value.trim();
+        const objectives = text.split(',')
+        const newObjectives = []
+        objectives.forEach(e => {
+            if (e !== '') {
+                console.log(e.length)
+                newObjectives.push(e.trim());
+            }
+        });
+        setObjectives(newObjectives)
     }
     return (
-        <div className='max-w-7xl mx-auto px-4 py-10'>
+        <div className='max-w-7xl  mx-auto px-4 py-10'>
             <h1 className="text-center font-bold text-2xl sm:text-3xl md:text-5xl">Add a Tutorial</h1>
             <p className="text-center my-5">Add a Tutorial and some clean money</p>
             <form
@@ -119,6 +134,27 @@ const AddTutorial = () => {
                     </fieldset>
                 </div>
 
+                {/* Objectives */}
+                <fieldset className='fieldset'>
+                    <label className='label'>Objectives</label>
+                    <p className="">Separate with comma &#40; ,  &#41;</p>
+                    <span className="flex gap-1.5">
+                        {
+                            objectives?.map((o, i) =>
+                                <span key={i} className="bg-lime-300 px-2 py-0.5 rounded-full">
+                                    {o}
+                                </span>
+                            )
+                        }
+                    </span>
+                    <textarea
+                        onChange={handleObjectives}
+                        type=""
+                        name='objectives'
+                        required
+                        className="textarea w-full"
+                        placeholder="Ex: Recognize common characters, Order at a restaurant, Ask for directions" />
+                </fieldset>
                 {/* Description */}
                 <fieldset className='fieldset'>
                     <label className='label'>Description</label>
@@ -132,7 +168,7 @@ const AddTutorial = () => {
 
                 {/* Submit Button */}
                 <input
-                    className='btn w-full bg-orange-500 text-white'
+                    className='btn w-full btn-secondary text-white'
                     type="submit"
                     role='button'
                     value='Add Tutorial' />

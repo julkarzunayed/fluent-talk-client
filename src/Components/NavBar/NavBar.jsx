@@ -69,7 +69,7 @@ const NavBar = () => {
                             {
                                 user &&
                                 <li>
-                                    <NavLink className={navLinks} to={`/myBookedTutorials`}>My Booked Tutorials</NavLink>
+                                    <NavLink className={navLinks} to={`/dashboard/myBookedTutorials`}>My Booked Tutorials</NavLink>
                                 </li>
 
                             }
@@ -164,7 +164,7 @@ const NavBar = () => {
                             {
                                 user &&
 
-                                <Link to={`/profile`} className="my-anchor-element">
+                                <Link to={`/dashboard/profile`} className="my-anchor-element">
                                     <div
                                         style={{ backgroundImage: `url(${dbUser?.photo_URL || 'https://placehold.co/550x400/444444/ff7800.png?text=Avater'})` }}
                                         className="hidden sm:block border border-gray-400 w-9 h-9 rounded-full bg-center bg-cover">

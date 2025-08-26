@@ -8,7 +8,7 @@ const ProfilePage = () => {
             <Profile></Profile>
             <div className="flex items-center justify-center gap-4">
                 <Link
-                    to={`/settings`}
+                    to={`/dashboard/settings`}
                     className='btn flex-1 border w-full max-w-sm border-orange-500'>
                     Profile Settings
                 </Link>

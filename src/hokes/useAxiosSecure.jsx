@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 
 
 const axiosInstance = axios.create({
-    baseURL: `http://localhost:3000`
+    baseURL: `http://localhost:3000/`
     // baseURL: 'https://fluent-talk-server-pink.vercel.app/',
 })
 
@@ -13,7 +13,7 @@ const useAxiosSecure = () => {
 
     // request Interceptors
     axiosInstance.interceptors.request.use((config) => {
-        config.headers.authorization = `Bearer ${user.accessToken}`
+        config.headers.authorization = `Bearer ${user?.accessToken}`
         return config;
     });
 

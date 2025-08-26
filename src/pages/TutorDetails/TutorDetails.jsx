@@ -11,6 +11,8 @@ import useMyBookedTutorials from '../../apis/useMyBookedTutorials';
 import useAxios from '../../hokes/useAxios';
 import { useQuery } from '@tanstack/react-query';
 import Loader from '../Loader/Loader';
+import FeaturedTutors from '../HomePage/FeaturedTutors';
+import StarRatings from '../../Components/StarRating/StarRating';
 
 const TutorDetails = () => {
     const axiosPublic = useAxios();
@@ -106,10 +108,42 @@ const TutorDetails = () => {
             })
     }
     return (
-        <div className="bg-base-200 pt-11">
+        <div className="bg-base-200 py-11">
             {
                 (!isLoading && !isPending) ?
-                    <div className='max-w-[1500px] min-h-[70vh] relative mx-auto bg-base-100'>
+                    <div className='max-w-[1500px] min-h-[70vh] relative mx-auto'>
+                        <div className="grid grid-cols-12 *:border p-6 gap-6 ">
+                            <div className="col-span-4">
+                                <img src={tutor?.tutorImage} className='aspect-square w-full object-cover' alt={tutor?.tutorName} />
+                            </div>
+                            <div className="col-span-8">
+                                <div className="flex justify-between">
+                                    <div className="flex gap-3">
+                                        <h3 className="text-3xl font-bold">
+                                            <span>Tutor: </span>
+                                            {tutor?.tutorName}
+                                        </h3>
+                                        <img
+                                            className='w-7'
+                                            alt="Flags"
+                                            src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
+                                    </div>
+                                    <div className="">
+                                        <StarRatings
+                                            rating={tutor?.ratingsAverage || 0}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="">
+                                        <p className="">Tutor Email: {tutor?.tutorEmail}</p>
+                                        <p className="">Tutor ID: {tutor?.tutorId}</p>
+                                    </div>
+                                    <p className="font-bold text-5xl">{tutor?.price} $</p>
+
+                                </div>
+                            </div>
+                        </div>
                         <div className="relative border-b border-secondary">
                             <div className="absolute w-full">
                                 <div className="bg-gray-300 h-40 rounded-b-3xl"></div>
@@ -215,7 +249,7 @@ const TutorDetails = () => {
                             }
 
                         </div>
-
+                        <FeaturedTutors />
                     </div>
                     :
                     <Loader></Loader>

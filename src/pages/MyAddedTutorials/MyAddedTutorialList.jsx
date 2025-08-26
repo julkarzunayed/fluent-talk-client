@@ -1,11 +1,27 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import MyAddedTutorialsRow from './MyAddedTutorialsRow';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../hokes/useAuth';
+import useAxiosSecure from '../../hokes/useAxiosSecure';
+import Loader from '../Loader/Loader';
 
 const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
-    const tutorials = use(myAddedTutorialsPromise);
-    console.log(tutorials)
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    // const tutorials = use(myAddedTutorialsPromise);
+    const { data: tutorials = [], isLoading, isPending } = useQuery({
+        queryKey: ['my_added_tutorials', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`tutorial/byTutorId?email=${user?.email}`)
+            return await res.data;
+        }
+    })
+    // console.log(tutorials)
     const isTutorials = Boolean(tutorials?.length);
+    if (isLoading, isPending) {
+        return <Loader />
+    }
     return (
         <div>
             {

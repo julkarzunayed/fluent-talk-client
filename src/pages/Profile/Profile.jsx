@@ -7,15 +7,15 @@ import { FaRegIdBadge } from 'react-icons/fa';
 const Profile = () => {
     const { dbUser } = useAuth();
     return (
-        <div className='max-w-[1500px] pt-11 relative mx-auto  bg-base-200'>
-            <div className="relative border-b border-orange-300">
+        <div className='max-w-[1500px]  relative mx-auto  bg-base-200'>
+            <div className="relative border-b border-secondary">
                 <div className="absolute w-full">
-                    <div className="bg-gray-300 h-36 border-b border-orange-600 rounded-b-3xl"></div>
+                    <div className="bg-gray-300 h-36 border-b border-secondary rounded-b-3xl"></div>
                     <div className="h-36"></div>
                 </div>
                 <figure
                     style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
-                    className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-orange-600 ">
+                    className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
 
                 </figure>
                 <div className="py-5">

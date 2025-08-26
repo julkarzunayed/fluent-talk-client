@@ -6,6 +6,7 @@ import LanguageCategory from './LanguageCategory';
 import OurTeem from './OurTeem';
 import HowItWorks from './HowItWorks';
 import StudentSupport from './StudentSupport';
+import FeaturedTutors from './FeaturedTutors';
 
 const Home = () => {
     return (
@@ -14,9 +15,10 @@ const Home = () => {
             <div className="*:p-4">
                 <Stat></Stat>
                 <LanguageCategory></LanguageCategory>
-                <HowItWorks/>
+                <HowItWorks />
+                <FeaturedTutors />
                 <OurTeem></OurTeem>
-                <StudentSupport/>
+                <StudentSupport />
             </div>
         </div>
     );

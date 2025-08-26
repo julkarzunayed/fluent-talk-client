@@ -3,7 +3,7 @@ import React from 'react';
 const HomeTitle = ({ titleMini, title_1, title_2, title_1_color }) => {
     // console.log({ titleMini, title_1, title_2, title_1_color })
     return (
-        <div className='relative pb-20 pt-24 font-sanchez'>
+        <div className='relative pb-11 pt-16 font-sanchez'>
             <h5 className="text-gray-400 font-semibold text-lg mb-1">
                 {titleMini || ''}
             </h5>

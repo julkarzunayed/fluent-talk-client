@@ -61,7 +61,7 @@ const MyAddedTutorialsRow = ({ tutorial, index }) => {
             <th className='flex items-center flex-wrap justify-center'>
                 {/* Edit Button */}
                 <Link
-                    to={`/editTutorial/${tutorial?._id}`}
+                    to={`/dashboard/editTutorial/${tutorial?._id}`}
                     className=" text-green-500 hover:bg-base-300 cursor-pointer p-0.5">
                     <BiEdit size={20} />
                 </Link>
