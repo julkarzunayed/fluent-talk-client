@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import MyAddedTutorialList from './MyAddedTutorialList';
 // import useMyAddedTutorials from '../../apis/useMyAddedTutorials';
-import useAuth from '../../hokes/useAuth';
+// import useAuth from '../../hokes/useAuth';
 
 const MyAddedTutorials = () => {
-    const {user} = useAuth();
+    // const {user} = useAuth();
     // const {myAddedTutorialsPromise} = useMyAddedTutorials();
     return (
         <div>

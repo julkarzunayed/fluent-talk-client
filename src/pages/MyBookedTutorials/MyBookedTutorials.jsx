@@ -9,8 +9,9 @@ const MyBookedTutorials = () => {
     return (
         <div>
             <Suspense>
-                <MyBookedTutorialsList
-                    myBookedTutorialsPromise={myBookedTutorialsPromise(user?.email)} />
+                <MyBookedTutorialsList />
+                {/* <MyBookedTutorialsList
+                    myBookedTutorialsPromise={myBookedTutorialsPromise(user?.email)} /> */}
             </Suspense>
         </div>
     );

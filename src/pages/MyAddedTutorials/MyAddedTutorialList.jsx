@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import MyAddedTutorialsRow from './MyAddedTutorialsRow';
 import { useQuery } from '@tanstack/react-query';
@@ -6,7 +6,7 @@ import useAuth from '../../hokes/useAuth';
 import useAxiosSecure from '../../hokes/useAxiosSecure';
 import Loader from '../Loader/Loader';
 
-const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
+const MyAddedTutorialList = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     // const tutorials = use(myAddedTutorialsPromise);
@@ -18,10 +18,10 @@ const MyAddedTutorialList = ({ myAddedTutorialsPromise }) => {
         }
     })
     // console.log(tutorials)
-    const isTutorials = Boolean(tutorials?.length);
     if (isLoading, isPending) {
         return <Loader />
     }
+    const isTutorials = Boolean(tutorials?.length);
     return (
         <div>
             {

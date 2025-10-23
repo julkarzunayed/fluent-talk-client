@@ -70,7 +70,7 @@ const SignUp = () => {
 
     }
     return (
-        <div className="flex items-center justify-center py-10">
+        <div className="flex items-center justify-center min-h-screen py-10">
             <div className="max-w-sm w-full">
                 <h1 className="my-3 font-bold text-3xl">Sign up as a
                     {isRole ? location?.state?.role : " student"}!</h1>

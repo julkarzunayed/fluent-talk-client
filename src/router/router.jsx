@@ -16,6 +16,7 @@ import ProfilePage from '../pages/Profile/ProfilePage';
 import EditTutorial from '../pages/EditTutorial/EditTutorial';
 import FindTutorialPage from '../pages/FindTutors/FindTutorialPage';
 import DashboardLayout from '../layout/DashboardLayout/DashboardLayout';
+import AboutPage from '../pages/AboutPage/AboutPage';
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
                 element: <TutorDetails />,
                 // loader: ({ params }) => fetch(`https://fluent-talk-server-pink.vercel.app/tutorial?tutorial_id=${params.id}`),
                 // hydrateFallbackElement: <Loader />
+            },
+            {
+                path: '/about',
+                Component: AboutPage,
             },
             {
                 path: '/messages',
@@ -60,11 +65,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: 'myAddedTutorials',
-                element: <MyAddedTutorials />
+                element: <PrivetRout>
+                    <MyAddedTutorials />
+                </PrivetRout>
             },
             {
                 path: 'profile',
-                element: <ProfilePage />
+                element: <PrivetRout>
+                    <ProfilePage />
+                </PrivetRout>
             },
             {
                 path: 'settings',
@@ -80,7 +89,9 @@ const router = createBrowserRouter([
             },
             {
                 path: 'myBookedTutorials',
-                element: <MyBookedTutorials />
+                element: <PrivetRout>
+                    <MyBookedTutorials />
+                </PrivetRout>
             },
             {
                 path: 'editTutorial/:id',

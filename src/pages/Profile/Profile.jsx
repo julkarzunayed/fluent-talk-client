@@ -3,9 +3,11 @@ import useAuth from '../../hokes/useAuth';
 import { TfiEmail } from "react-icons/tfi";
 import { IoMdHeart } from 'react-icons/io';
 import { FaRegIdBadge } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Profile = () => {
     const { dbUser } = useAuth();
+    
     return (
         <div className='max-w-[1500px]  relative mx-auto  bg-base-200'>
             <div className="relative border-b border-secondary">
@@ -15,7 +17,7 @@ const Profile = () => {
                 </div>
                 <figure
                     style={{ backgroundImage: `url(${dbUser?.photo_URL})` }}
-                    className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
+                    className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-0 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
 
                 </figure>
                 <div className="py-5">
@@ -29,7 +31,7 @@ const Profile = () => {
                     <h3 className="text-3xl font-bold">
                         {dbUser?.name}
                     </h3>
-                    <p className="flex items-center justify-center gap-3"><TfiEmail className='text-orange-500'/> {dbUser?.email}</p>
+                    <p className="flex items-center justify-center gap-3"><TfiEmail className='text-orange-500' /> {dbUser?.email}</p>
                     <p className="flex items-center justify-center gap-3"> <FaRegIdBadge className='text-orange-500' />: {dbUser?._id}</p>
                     <p className="">
                         <span className='font-semibold'>Account Type: </span>
@@ -38,7 +40,7 @@ const Profile = () => {
                         }
                     </p>
                 </div>
-                
+
             </div>
 
         </div>

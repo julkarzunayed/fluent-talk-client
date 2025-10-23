@@ -47,7 +47,7 @@ const TutorDetails = () => {
         enabled: !!id
     })
 
-    console.log(tutor)
+    // console.log(tutor)
 
     const isReviewed = tutor?.review?.includes(user?.email);
 
@@ -112,21 +112,20 @@ const TutorDetails = () => {
             {
                 (!isLoading && !isPending) ?
                     <div className='max-w-[1500px] min-h-[70vh] relative mx-auto'>
-                        <div className="grid grid-cols-12 *:border p-6 gap-6 ">
-                            <div className="col-span-4">
-                                <img src={tutor?.tutorImage} className='aspect-square w-full object-cover' alt={tutor?.tutorName} />
+                        <div className="grid grid-cols-1 lg:grid-cols-12  p-6 gap-6 ">
+                            {/* Tutor image */}
+                            <div className="lg:col-span-4 ">
+                                <img src={tutor?.tutorImage} className='aspect-square w-full object-cover max-w-sm mx-auto rounded-2xl' alt={tutor?.tutorName} />
                             </div>
-                            <div className="col-span-8">
+                            {/*----------------- Content -----------------*/}
+                            <div className="lg:col-span-8">
                                 <div className="flex justify-between">
                                     <div className="flex gap-3">
                                         <h3 className="text-3xl font-bold">
                                             <span>Tutor: </span>
                                             {tutor?.tutorName}
                                         </h3>
-                                        <img
-                                            className='w-7'
-                                            alt="Flags"
-                                            src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
+
                                     </div>
                                     <div className="">
                                         <StarRatings
@@ -134,6 +133,14 @@ const TutorDetails = () => {
                                         />
                                     </div>
                                 </div>
+                                <p className="text-lg font-semibold flex items-center gap-2">
+                                    <span className='font-bold '>Language:</span>
+                                    {tutor?.language}
+                                    <img
+                                        className='w-7'
+                                        alt="Flags"
+                                        src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${tutor?.language_alpha2Code}.svg`} />
+                                </p>
                                 <div className="flex justify-between">
                                     <div className="">
                                         <p className="">Tutor Email: {tutor?.tutorEmail}</p>
@@ -142,25 +149,48 @@ const TutorDetails = () => {
                                     <p className="font-bold text-5xl">{tutor?.price} $</p>
 
                                 </div>
+                                <div className="">
+                                    <p className="font-bold">Key Objectives:</p>
+                                    <div className="flex flex-wrap gap-3 my-2">
+                                        {tutor?.objectives?.map((o, i) =>
+                                            <span key={i} className="bg-secondary/30 py-0.5 px-4 rounded-full">
+                                                {o}
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="">
+                                    <p className="text-lg">For: {tutor?.level || 'not mentioned'}</p>
+                                    <p className="">
+                                        <span className='font-bold'>Description: </span>
+                                        {tutor?.description}
+                                    </p>
+                                </div>
+                                <div className="flex justify-end items-end mt-2">
+                                    {
+                                        !isBooked ?
+                                            <button
+                                                onClick={hanDleBookTutorial}
+                                                className='btn  btn-secondary'>
+                                                Book Tutor
+                                            </button>
+                                            :
+                                            <div className=' w-full'>
+                                                <p className="my-1 text-blue-400">Tutorial is already Booked</p>
+                                                <Link
+                                                    to={'/myBookedTutorials'}
+                                                    className='btn  btn-secondary'>
+                                                    Check Your Booking
+                                                </Link>
+                                            </div>
+
+
+                                    }
+                                </div>
                             </div>
                         </div>
-                        <div className="relative border-b border-secondary">
-                            <div className="absolute w-full">
-                                <div className="bg-gray-300 h-40 rounded-b-3xl"></div>
-                                <div className="h-36"></div>
-                            </div>
-                            <figure
-                                style={{ backgroundImage: `url(${tutor?.tutorImage})` }}
-                                className="absolute top-[19px] left-1/2 transform -translate-x-1/2 z-10 border border-gray-400 max-w-[250px] w-full max-h-[250px] h-full rounded-full bg-center bg-cover border-t-4 border-t-secondary ">
 
-                            </figure>
-                            <div className="py-5">
-                                <div className="h-[250px] "></div>
-                            </div>
-
-                        </div>
-
-                        <div className="max-w-sm *:mb-5 mx-auto mt-5 pb-5">
+                        {/* <div className="max-w-sm *:mb-5 mx-auto mt-5 pb-5">
                             <div className="flex justify-between ">
                                 <div className="">
                                     <div className="flex gap-3">
@@ -248,7 +278,7 @@ const TutorDetails = () => {
                                     </div>
                             }
 
-                        </div>
+                        </div> */}
                         <FeaturedTutors />
                     </div>
                     :

@@ -1,12 +1,29 @@
-import React, { use } from 'react';
+import React from 'react';
 import MyBookedTutorialsRow from './MyBookedTutorialsRow';
 import { Link } from 'react-router';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../hokes/useAuth';
+import useAxiosSecure from '../../hokes/useAxiosSecure';
+import Loader from '../Loader/Loader';
 
-const MyBookedTutorialsList = ({ myBookedTutorialsPromise }) => {
-    const tutorials = use(myBookedTutorialsPromise)
-    
+const MyBookedTutorialsList = () => {
+    const { user } = useAuth();
+    // const tutorials = use(myBookedTutorialsPromise)
+    const axiosSecure = useAxiosSecure();
+
+    const { data: tutorials = [], isLoading, isPending } = useQuery({
+        queryKey: ['my_added_tutorials', user?.email],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`tutorialBooking?email=${user?.email}`)
+            return res.data;
+        }
+    })
+    if (isLoading && isPending) {
+        return <Loader />
+    }
+
     const isTutorials = Boolean(tutorials.length);
-    
+
     return (
         <div className='max-w-7xl mx-auto'>
             {

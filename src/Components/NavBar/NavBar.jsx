@@ -74,7 +74,8 @@ const NavBar = () => {
 
                             }
                             <li><NavLink className={navLinks} to={`/dashboard`}>Dashboard</NavLink></li>
-                            <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li>
+                            <li><NavLink className={navLinks} to={`/about`}>About Us</NavLink></li>
+                            {/* <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li> */}
                         </ul>
                     </div>
 
@@ -135,7 +136,7 @@ const NavBar = () => {
                                         </li>
                                     }
                                     <li><NavLink className={navLinks} to={`/dashboard`}>Dashboard</NavLink></li>
-                                    <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li>
+                                    {/* <li><NavLink className={navLinks} to={`/help`}>Help</NavLink></li> */}
                                     {
                                         user &&
                                         <li>
@@ -178,6 +179,19 @@ const NavBar = () => {
                                 onClick={() => setShowLinks(!showLinks)}>
                                 <FaListUl className='text-gray-200' size={28} />
                             </button>
+                            {
+                                !user &&
+                                <Link
+                                    className='hidden lg:block'
+                                    to={`/logIn`}>
+                                    <button
+                                        className="btn btn-secondary flex items-center gap-2">
+                                        <PiSignInBold />
+                                        Sign In
+                                    </button>
+                                </Link>
+                            }
+
                         </div>
                     </div>
                 </div>
