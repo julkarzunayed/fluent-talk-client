@@ -17,6 +17,7 @@ import EditTutorial from '../pages/EditTutorial/EditTutorial';
 import FindTutorialPage from '../pages/FindTutors/FindTutorialPage';
 import DashboardLayout from '../layout/DashboardLayout/DashboardLayout';
 import AboutPage from '../pages/AboutPage/AboutPage';
+import ContactPage from '../pages/CaontactPage/ContactPage';
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/about',
                 Component: AboutPage,
+            },
+            {
+                path: '/contactUs',
+                Component: ContactPage,
             },
             {
                 path: '/messages',

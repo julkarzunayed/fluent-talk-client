@@ -41,7 +41,7 @@ const TutorCTA = () => {
                     <p className="max-w-3xl mx-auto text-lg text-gray-600 dark:text-gray-300">
                         Join our global network of passionate and expert tutors and transform lives through education. Our platform provides the technology, flexibility, and worldwide audience you need to build a successful tutoring career on your own terms.
                     </p>
-                    <p className="mt-4 text-lg font-medium text-secondary dark:text-indigo-400">
+                    <p className="mt-4 text-lg font-medium text-secondary ">
                         We are actively seeking experienced and dedicated individuals who are ready to inspire fluency in others.
                     </p>
                 </div>
@@ -57,7 +57,7 @@ const TutorCTA = () => {
                                 key={index}
                                 className="flex flex-col items-center text-center p-6 bg-indigo-50 dark:bg-gray-700 rounded-lg shadow-md transition duration-300 hover:shadow-lg hover:translate-y-[-2px]"
                             >
-                                <benefit.icon className="w-10 h-10 text-secondary dark:text-indigo-400 mb-4" />
+                                <benefit.icon className="w-10 h-10 text-secondary mb-4" />
                                 <p className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{benefit.title}</p>
                                 <p className="text-sm text-gray-600 dark:text-gray-300">{benefit.description}</p>
                             </div>
